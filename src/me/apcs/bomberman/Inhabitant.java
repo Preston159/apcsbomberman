@@ -19,7 +19,7 @@ public abstract class Inhabitant {
 		return loc;
 	}
 	
-	public void setLocation() {
+	public void setLocation(Location l) {
 		
 	}
 	
