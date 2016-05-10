@@ -1,5 +1,9 @@
-/*
- * Authors: Preston Petrie, Braden Czerwinski, Brandon Piunti, Jacob Sako
+/**
+ * Inhabitant.java
+ * @author Preston Petrie
+ * @author Braden Czerwinski
+ * @author Brandon Piunti
+ * @author Jacob Sako
  */
 
 package me.apcs.bomberman;
