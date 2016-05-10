@@ -5,7 +5,7 @@ import java.awt.Color;
 public abstract class Inhabitant {
 	
 	private Color color;
-	private Location l;
+	private Location loc;
 	
 	public Color getColor() {
 		return color;
@@ -16,7 +16,7 @@ public abstract class Inhabitant {
 	}
 	
 	public Location getLocation() {
-		return l;
+		return loc;
 	}
 	
 	public void setLocation() {
