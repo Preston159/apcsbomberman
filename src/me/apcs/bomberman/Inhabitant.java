@@ -1,3 +1,7 @@
+/*
+ * Authors: Preston Petrie, Braden Czerwinski, Brandon Piunti, Jacob Sako
+ */
+
 package me.apcs.bomberman;
 
 import java.awt.Color;
