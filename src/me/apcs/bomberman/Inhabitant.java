@@ -1,5 +1,5 @@
 package me.apcs.bomberman;
 
-public class Inhabitant {
+public abstract class Inhabitant {
 
 }
