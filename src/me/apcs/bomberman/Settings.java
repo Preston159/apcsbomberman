@@ -1,3 +1,8 @@
+/**
+ * Settings.java
+ * @author Preston Petrie
+ */
+
 package me.apcs.bomberman;
 
 import java.io.File;
