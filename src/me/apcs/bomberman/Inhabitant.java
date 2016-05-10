@@ -11,18 +11,34 @@ public class Inhabitant {
 	private Color color;
 	private Location loc;
 	
+	/**
+	 * Returns the current <code>Color</code>
+	 * @return	The current <code>Color</code> of the <code>Inhabitant</code>
+	 */
 	public Color getColor() {
 		return color;
 	}
 	
+	/**
+	 * Changes the <code>Color</code> of the <code>Inhabitant</code>
+	 * @param c	The <code>Color</code> to which to change the <code>Inhabitant</code>
+	 */
 	public void setColor(Color c) {
 		color = c;
 	}
 	
+	/**
+	 * Returns the current <code>Location</code>
+	 * @return	The current <code>Location</code> of the <code>Inhabitant</code>
+	 */
 	public Location getLocation() {
 		return loc;
 	}
 	
+	/**
+	 * Moves the <code>Inhabitant</code> to the specified <code>Location</code>
+	 * @param l	The <code>Location</code> to which to move
+	 */
 	public void setLocation(Location l) {
 		loc = l;
 	}
