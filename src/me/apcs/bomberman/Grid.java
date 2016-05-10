@@ -12,7 +12,7 @@ public class Grid<T> {
 	private Object[][] tArr;
 	
 	public Grid() {
-		//initialize tArr
+		//initialize field
 		tArr = new Object[10][10];
 	} //Grid
 	
