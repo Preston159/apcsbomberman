@@ -14,4 +14,9 @@ public class Location {
 	public int getY() {
 		return y;
 	}
+	
+	public void add(int dx, int dy) {
+		x = x + dx;
+		y = y + dy;
+	}
 }
