@@ -1,5 +1,5 @@
 package me.apcs.bomberman;
 
-public class Powerup {
-
+public interface Powerup {
+	
 }
