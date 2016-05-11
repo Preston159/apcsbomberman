@@ -18,10 +18,10 @@ public class Location {
         return (int)y;
     }
 	public double getX() {
-		return x;
+		return x + 0.5;
 	}
 	public double getY() {
-		return y;
+		return y + 0.5;
 	}
 
 	public void add(int dx, int dy) {
