@@ -1,22 +1,32 @@
 package me.apcs.bomberman;
+/**
+ * @author Zack Seliger
+*/
 
 public class Location {
-	private int x, y;
-	
-	public Location (int xx, int yy) {
+	private double x, y;
+
+	public Location (double xx, double yy) {
 		x = xx;
 		y = yy;
 	}
-	
-	public int getX() {
+
+	public double getX() {
 		return x;
 	}
-	public int getY() {
+	public double getY() {
 		return y;
 	}
-	
+
 	public void add(int dx, int dy) {
-		x = x + dx;
-		y = y + dy;
+		x += dx;
+		y += dy;
+
+		y = (int)y;
+		x = (int)x;
+	}
+	public void add(double dx, double dy) {
+	    x += dx;
+	    y += dy;
 	}
 }
