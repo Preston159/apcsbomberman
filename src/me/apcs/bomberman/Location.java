@@ -11,6 +11,12 @@ public class Location {
 		y = yy;
 	}
 
+    public int getIntX() {
+        return (int)x;
+    }
+    public int getIntY() {
+        return (int)y;
+    }
 	public double getX() {
 		return x;
 	}
@@ -21,9 +27,6 @@ public class Location {
 	public void add(int dx, int dy) {
 		x += dx;
 		y += dy;
-
-		y = (int)y;
-		x = (int)x;
 	}
 	public void add(double dx, double dy) {
 	    x += dx;
