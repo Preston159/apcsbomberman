@@ -103,7 +103,7 @@ public class Grid<T> {
 			return (T) tArr[l.getX()][l.getY()];
 		} //end if
 		
-		throw new IndexOutOfBoundsException("Location's coordinates are not in rage!");
+		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //get
 	
 	/**
@@ -126,7 +126,7 @@ public class Grid<T> {
 			return oldT;
 		} //end if
 		
-		throw new IndexOutOfBoundsException("Location's coordinates are not in rage!");
+		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //set
 	
 	/**
@@ -148,7 +148,7 @@ public class Grid<T> {
 			return oldT;
 		} //end if
 				
-		throw new IndexOutOfBoundsException("Location's coordinates are not in rage!");
+		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //remove
 	
 	/**
