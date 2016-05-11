@@ -67,7 +67,7 @@ public class Inhabitant {
 	 * Checks if <code>Inhabitant</code> can move to given <code>Location</code>
 	 * @param g	The <code>Grid</code> on which the <code>Inhabitant</code> exists
 	 * @param l	The <code>Location</code> to which the <code>Inhabitant</code> is moving
-	 * @return	True if the given <code>Location</code> is on the given <code>Grid</code>
+	 * @return	True if the given <code>Location</code> is on the given <code>Grid</code> and does not contain a <code>Bomb</code> or <code>Brick</code>
 	 */
 	public boolean canMove(Grid g, Location l) {
 		
