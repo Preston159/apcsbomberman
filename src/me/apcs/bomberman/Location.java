@@ -7,8 +7,8 @@ public class Location {
 	private double x, y;
 
 	public Location (int xx, int yy) {
-		x = xx;
-		y = yy;
+		x = xx + 0.5;
+		y = yy + 0.5;
 	}
 
     public int getIntX() {
@@ -18,10 +18,10 @@ public class Location {
         return (int)y;
     }
 	public double getX() {
-		return x + 0.5;
+		return x;
 	}
 	public double getY() {
-		return y + 0.5;
+		return y;
 	}
 
 	public void add(int dx, int dy) {
