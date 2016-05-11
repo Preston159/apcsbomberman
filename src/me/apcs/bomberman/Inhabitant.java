@@ -70,7 +70,7 @@ public class Inhabitant {
 	 * @param dy	Change in y
 	 * @return	True if successfully moved, false if not
 	 */
-	public boolean move(int dx, int dy) {
+	public boolean move(double dx, double dy) {
 		Location l = getLocation();
 		l.add(dx, dy);
 		if(canMove(g, l)) {
@@ -78,6 +78,16 @@ public class Inhabitant {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Moves <code>Inhabitant</code> by the given distance
+	 * @param dx	Change in x
+	 * @param dy	Change in y
+	 * @return	True if successfully moved, false if not
+	 */
+	public boolean move(int dx, int dy) {
+		return move(dx, dy);
 	}
 	
 	/**
