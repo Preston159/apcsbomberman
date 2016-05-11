@@ -6,7 +6,7 @@ package me.apcs.bomberman;
 public class Location {
 	private double x, y;
 
-	public Location (double xx, double yy) {
+	public Location (int xx, int yy) {
 		x = xx;
 		y = yy;
 	}
