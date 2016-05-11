@@ -56,9 +56,21 @@ public class Inhabitant {
 	public boolean move(int dx, int dy) {
 		Location l = getLocation();
 		l.add(dx, dy);
-		//check isn't out of bounds
-		setLocation(l);
-		return true;
+		if(canMove(g, l)) {
+			setLocation(l);
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Checks if <code>Inhabitant</code> can move to given <code>Location</code>
+	 * @param g	The <code>Grid</code> on which the <code>Inhabitant</code> exists
+	 * @param l	The <code>Location</code> to which the <code>Inhabitant</code> is moving
+	 * @return	True if the given <code>Location</code> is on the given <code>Grid</code>
+	 */
+	public boolean canMove(Grid g, Location l) {
+		
 	}
 	
 }
