@@ -8,7 +8,7 @@ public class Game {
 	private static Grid<Inhabitant> grid;
 	private static List<Bomberman> players;
 	
-	public static void init() {
+	public static void main(String[] args) {
 		Settings.init();
 		int sizeX = Integer.valueOf(Settings.p.getProperty("gridSizeX"));
 		int sizeY = Integer.valueOf(Settings.p.getProperty("gridSizeY"));
