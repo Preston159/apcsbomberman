@@ -16,5 +16,12 @@ public class Bomb extends Inhabitant {
 	{
 		return bombLength;
 	}
+	
+	public void increaseBombLength()
+	{
+		bombLength++;
+	}
 
+	
+	
 }
