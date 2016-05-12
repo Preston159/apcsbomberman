@@ -4,6 +4,7 @@ public class Bomberman extends Inhabitant{
 
 	private int speed;
 	private int bombCapacity;
+	private boolean kickBomb;
 	
 	
 	public Bomberman(int s, int bc)
@@ -12,7 +13,7 @@ public class Bomberman extends Inhabitant{
 		bombCapacity = bc;
 	}
 	
-	public void upgradeSpeed(int amt)
+	public void changeSpeed(int amt)
 	{
 		speed += amt;
 	}
