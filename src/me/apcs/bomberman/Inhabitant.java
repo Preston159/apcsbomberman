@@ -73,6 +73,7 @@ public class Inhabitant {
 	public boolean move(double dx, double dy) {
 		Location l = getLocation();
 		l.add(dx, dy);
+		Grid<Inhabitant> g = Game.getGrid();
 		if(canMove(g, l)) {
 			setLocation(l);
 			return true;
