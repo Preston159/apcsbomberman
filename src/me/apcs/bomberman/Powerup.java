@@ -1,9 +1,13 @@
 package me.apcs.bomberman;
 
-public class Powerup {
+public class Powerup extends Inhabitant {
 	public enum Type {SPEED, CAPACITY, CAN_KICK, BOMB_SIZE};
 	private Bomberman bomber;
 	Type type = Type.SPEED;
+	
+	public Powerup(Location loc) {
+		super(null, loc);
+	}
 	
 	/**
 	 * upgrades the bomber based on <code>type</code>
