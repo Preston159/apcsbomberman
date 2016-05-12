@@ -22,6 +22,7 @@ public class Settings {
 	
 	static {
 		//add default settings here
+		p.setProperty("ticksPerSecond", "30");
 		p.setProperty("defaultSpeed", "1");
 		p.setProperty("gridSizeX", "10");
 		p.setProperty("gridSizeY", "10");
