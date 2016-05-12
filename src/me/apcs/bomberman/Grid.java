@@ -55,9 +55,9 @@ public class Grid<T> {
 	 */
 	public boolean isValid(Location l) {
 		//determine if l's x coordinate is valid
-		if (l.getX() >= 0 && l.getX() < this.tArr.length) {
+		if (l.getIntX() >= 0 && l.getIntX() < this.tArr.length) {
 			//determine if l's y coordinate is valid
-			if (l.getY() >= 0 && l.getY() < this.tArr[0].length) {
+			if (l.getIntY() >= 0 && l.getIntY() < this.tArr[0].length) {
 				return true;
 			} //end if
 		} //end if
