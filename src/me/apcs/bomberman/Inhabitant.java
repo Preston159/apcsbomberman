@@ -106,6 +106,9 @@ public class Inhabitant {
 		return false;
 	}
 	
+	/**
+	 * Removes the <code>Inhabitant</code> from the <code>Grid</code>
+	 */
 	public void destroy() {
 		Game.getGrid().remove(this.getLocation());
 	}
