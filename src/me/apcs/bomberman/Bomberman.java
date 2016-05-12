@@ -1,3 +1,10 @@
+/**
+ * @Author - Noah Sebenste
+ * @author - Donovan Ewing
+ * @Author - Umang Godhani
+ * @Author - Nemenja Drezga
+ */
+
 package me.apcs.bomberman;
 
 import java.awt.Color;
@@ -19,6 +26,16 @@ public class Bomberman extends Inhabitant{
 	public void changeSpeed(int amt)
 	{
 		speed += amt;
+	}
+	
+	public void increaseBombs(int x)
+	{
+		bombCapacity += x;
+	}
+	
+	public void canKick(boolean kick)
+	{
+		kickBomb = kick;
 	}
 	
 }

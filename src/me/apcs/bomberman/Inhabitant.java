@@ -73,6 +73,7 @@ public class Inhabitant {
 	public boolean move(double dx, double dy) {
 		Location l = getLocation();
 		l.add(dx, dy);
+		Grid<Inhabitant> g = Game.getGrid();
 		if(canMove(g, l)) {
 			setLocation(l);
 			return true;
@@ -96,8 +97,8 @@ public class Inhabitant {
 	 * @param l	The <code>Location</code> to which the <code>Inhabitant</code> is moving
 	 * @return	True if the given <code>Location</code> is on the given <code>Grid</code> and does not contain a <code>Bomb</code> or <code>Brick</code>
 	 */
-	public boolean canMove(Grid<Inhabitant> g, Inhabitant i, Location l) {
-		Location player = i.getLocation();
+	public boolean canMove(Grid<Inhabitant> g, Location l) {
+		Location player = this.getLocation();
 		if(player.inSameSquare(l) == true)
 			return true;
 		if(g.get(l) instanceof Bomberman || g.get(l) instanceof Powerup)
