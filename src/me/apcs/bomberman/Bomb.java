@@ -2,8 +2,8 @@ package me.apcs.bomberman;
 
 import java.awt.Color;
 
-public class Bomb extends Inhabitant {
-	
+public class Bomb extends Inhabitant
+{
 	private int bombLength;
 	
 	public Bomb (Color c, Location l, int b)
@@ -16,12 +16,4 @@ public class Bomb extends Inhabitant {
 	{
 		return bombLength;
 	}
-	
-	public void increaseBombLength()
-	{
-		bombLength++;
-	}
-
-	
-	
 }
