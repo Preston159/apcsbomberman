@@ -14,13 +14,15 @@ public class Bomberman extends Inhabitant{
 	private int speed;
 	private int bombCapacity;
 	private boolean kickBomb;
+	private int bombSize;
 	
-	
-	public Bomberman(Color c, Location l, int s, int bc)
+	public Bomberman(Color c, Location l, int s, int bc, int bs)
 	{
 		super(c, l);
 		speed = s;
 		bombCapacity = bc;
+		kickBomb = false;
+		bombSize = bs;
 	}
 	
 	public void changeSpeed(int amt)
@@ -36,6 +38,11 @@ public class Bomberman extends Inhabitant{
 	public void canKick(boolean kick)
 	{
 		kickBomb = kick;
+	}
+	
+	public void changeBombSize(int x)
+	{
+		bombSize += x;
 	}
 	
 }
