@@ -105,4 +105,8 @@ public class Inhabitant {
 			return true;
 		return false;
 	}
+	
+	public void destroy() {
+		Game.getGrid().remove(this.getLocation());
+	}
 }
