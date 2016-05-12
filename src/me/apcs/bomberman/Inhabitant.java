@@ -88,7 +88,7 @@ public class Inhabitant {
 	 * @return	True if successfully moved, false if not
 	 */
 	public boolean move(int dx, int dy) {
-		return move(dx, dy);
+		return move((double) dx, (double) dy);
 	}
 	
 	/**
