@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Game {
 	
-	private Grid<Inhabitant> grid;
-	private List<Bomberman> players;
+	private static Grid<Inhabitant> grid;
+	private static List<Bomberman> players;
 	
-	public void init() {
+	public static void init() {
 		Settings.init();
 		int sizeX = Integer.valueOf(Settings.p.getProperty("gridSizeX"));
 		int sizeY = Integer.valueOf(Settings.p.getProperty("gridSizeY"));
@@ -20,7 +20,7 @@ public class Game {
 	 * The <code>Grid</code> of the current game
 	 * @return	The <code>Grid<Inhabitant></code>of the current game
 	 */
-	public Grid<Inhabitant> getGrid() {
+	public static Grid<Inhabitant> getGrid() {
 		return grid;
 	}
 	
@@ -28,7 +28,7 @@ public class Game {
 	 * A <code>List</code> of all current <code>Bomberman</code>s
 	 * @return	</code>ArrayList<Bomberman></code> containing all <code>Bomberman</code>s on the <code>Grid</code>
 	 */
-	public List<Bomberman> getPlayers() {
+	public static List<Bomberman> getPlayers() {
 		return players;
 	}
 	
