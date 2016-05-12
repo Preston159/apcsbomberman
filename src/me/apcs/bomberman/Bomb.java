@@ -12,7 +12,7 @@ public class Bomb extends Inhabitant {
 		bombLength = b;
 	}
 	
-	public int getBombSize()
+	public int getBombLength()
 	{
 		return bombLength;
 	}
