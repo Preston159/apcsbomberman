@@ -100,7 +100,7 @@ public class Grid<T> {
 	public T get(Location l) throws IndexOutOfBoundsException {
 		//determine if l is a valid location
 		if (isValid(l)) {
-			return (T) tArr[l.getX()][l.getY()];
+			return (T) tArr[l.getIntX()][l.getIntY()];
 		} //end if
 		
 		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
@@ -121,7 +121,7 @@ public class Grid<T> {
 			T oldT = this.get(l);
 			
 			//set element at l to newT
-			tArr[l.getX()][l.getY()] = newT;
+			tArr[l.getIntX()][l.getIntY()] = newT;
 			
 			return oldT;
 		} //end if
@@ -142,8 +142,8 @@ public class Grid<T> {
 			//get old value at l
 			T oldT = this.get(l);
 					
-			//set element at l to newT
-			tArr[l.getX()][l.getY()] = null;
+			//set element at l to null
+			tArr[l.getIntX()][l.getIntY()] = null;
 					
 			return oldT;
 		} //end if
