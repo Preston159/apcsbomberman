@@ -11,7 +11,6 @@ import java.awt.Color;
 
 public class Bomberman extends Inhabitant{
 
-	private int speed;
 	private int bombCapacity;
 	private boolean kickBomb;
 	private int bombSize;
@@ -19,15 +18,10 @@ public class Bomberman extends Inhabitant{
 	public Bomberman(Color c, Location l, int s, int bc, int bs)
 	{
 		super(c, l);
-		speed = s;
+		super.setSpeed(s);
 		bombCapacity = bc;
 		kickBomb = false;
 		bombSize = bs;
-	}
-	
-	public void changeSpeed(int amt)
-	{
-		speed += amt;
 	}
 	
 	public void increaseBombs(int x)

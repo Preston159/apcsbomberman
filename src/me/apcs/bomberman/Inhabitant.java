@@ -14,6 +14,7 @@ public class Inhabitant {
 	
 	private Color color;
 	private Location loc;
+	private double speed;
 	
 	/**
 	 * Create <code>Inhabitant</code>
@@ -23,6 +24,7 @@ public class Inhabitant {
 	public Inhabitant(Color c, Location l) {
 		color = c;
 		loc = l;
+		speed = 0d;
 	}
 	
 	/**
@@ -30,6 +32,7 @@ public class Inhabitant {
 	 */
 	public Inhabitant() {
 		this(new Color(255, 255, 255), new Location(0, 0));
+		speed = 0d;
 	}
 	
 	/**
@@ -111,5 +114,13 @@ public class Inhabitant {
 	 */
 	public void destroy() {
 		Game.getGrid().remove(this.getLocation());
+	}
+	
+	public void setSpeed(double s) {
+		speed = s;
+	}
+	
+	public void changeSpeed(double s) {
+		speed += s;
 	}
 }
