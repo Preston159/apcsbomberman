@@ -13,5 +13,6 @@ public class Bomb extends Inhabitant {
 		bLength = b;
 	}
 	
+	
 
 }
