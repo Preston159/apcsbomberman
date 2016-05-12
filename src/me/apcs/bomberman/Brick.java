@@ -1,5 +1,11 @@
 package me.apcs.bomberman;
 
-public class Brick {
+import java.awt.Color;
 
+public class Brick extends Inhabitant
+{
+public Brick(Color c, Location l)
+{
+	super(c,l);
+}
 }
