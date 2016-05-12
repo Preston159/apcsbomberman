@@ -32,4 +32,13 @@ public class Location {
 	    x += dx;
 	    y += dy;
 	}
+	
+	/**
+	 * returns true if two locations are in the same square
+	 * 
+	 * @param other	the location to check if equal to
+	 */
+	public boolean inSameSquare(Location other) {
+		return (this.getIntX() == other.getIntX() && this.getIntY() == other.getIntY());
+	}
 }
