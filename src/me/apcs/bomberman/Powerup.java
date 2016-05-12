@@ -19,8 +19,8 @@ public class Powerup extends Inhabitant {
 			bomber.increaseBombs(1);
 		else if (type == Type.CAN_KICK)
 			bomber.canKick(true);
-		//else if (type == Type.BOMB_SIZE)
-			
+		else if (type == Type.BOMB_SIZE)
+			bomber.changeBombSize(1);
 	}
 	
 	public void setBomber(Bomberman b) {
