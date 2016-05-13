@@ -16,4 +16,11 @@ public class Bomb extends Inhabitant
 	{
 		return bombLength;
 	}
+	
+	public void explode()
+	{
+		Grid<Inhabitant> g = Game.getGrid();
+		Location l = this.getLocation();
+		
+	}
 }
