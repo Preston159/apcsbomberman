@@ -12,6 +12,10 @@ import java.awt.Color;
 
 public class Inhabitant {
 	
+	public static int RIGHT = 0, DOWN = 1, LEFT = 2, UP = 3;
+	
+	private final double stepDistance = 0.1;
+	
 	private Color color;
 	private Location loc;
 	private double speed;
@@ -122,5 +126,15 @@ public class Inhabitant {
 	
 	public void changeSpeed(double s) {
 		speed += s;
+	}
+	
+	/**
+	 * Steps the <code>Inhabitant</code> in the given direction
+	 * Use Inhabitant.<DIRECTION> as the direction
+	 * @param direction	The direction in which to move the <code>Inhabitant</code>
+	 * @return	Whether or not the <code>Inhabitant</code> was successfully moved
+	 */
+	public boolean step(int direction) {
+		//to be implemented
 	}
 }
