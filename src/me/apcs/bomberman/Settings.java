@@ -24,6 +24,7 @@ public class Settings {
 		//add default settings here
 		p.setProperty("ticksPerSecond", "30");
 		p.setProperty("defaultSpeed", "1");
+		p.setProperty("bombSpeed", "2");
 		p.setProperty("gridSizeX", "10");
 		p.setProperty("gridSizeY", "10");
 	}
@@ -41,8 +42,7 @@ public class Settings {
 			} catch(IOException ioe) {
 				readSuccessful = false;
 			}
-		}
-		try {
+		} else try {
 			fis = new FileInputStream(f);
 			p.load(fis);
 		} catch(IOException ioe) {
