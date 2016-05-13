@@ -145,8 +145,7 @@ public class Inhabitant {
 		case RIGHT:
 			return move(stepDistance * speed, 0);
 		default:
-			//only runs if invalid direction
-			return false;
+			throw new IllegalArgumentException("Invalid step direction");
 		}
 	}
 }
