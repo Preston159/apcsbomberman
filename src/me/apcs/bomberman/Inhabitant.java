@@ -135,6 +135,20 @@ public class Inhabitant {
 	 * @return	Whether or not the <code>Inhabitant</code> was successfully moved
 	 */
 	public boolean step(int direction) {
-		//to be implemented
+		switch(direction) {
+		case UP:
+			return move(0, -(stepDistance * speed));
+		case DOWN:
+			return move(0, stepDistance * speed);
+		case LEFT:
+			return move(-(stepDistance * speed), 0);
+		case RIGHT:
+			return move(stepDistance * speed, 0);
+		default:
+			//only runs if invalid direction
+			return false;
+		}
+		//never runs
+		return false;
 	}
 }
