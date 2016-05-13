@@ -12,7 +12,7 @@ import java.awt.Color;
 
 public class Inhabitant {
 	
-	public static int RIGHT = 0, DOWN = 1, LEFT = 2, UP = 3;
+	public static final int RIGHT = 0, DOWN = 1, LEFT = 2, UP = 3;
 	
 	private final double stepDistance = 0.1;
 	
@@ -148,7 +148,5 @@ public class Inhabitant {
 			//only runs if invalid direction
 			return false;
 		}
-		//never runs
-		return false;
 	}
 }
