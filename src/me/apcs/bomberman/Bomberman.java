@@ -15,6 +15,14 @@ public class Bomberman extends Inhabitant{
 	private boolean kickBomb;
 	private int bombSize;
 	
+	/**
+	 * Initializes the bomberman
+	 * @param c
+	 * @param l
+	 * @param s
+	 * @param bc
+	 * @param bs
+	 */
 	public Bomberman(Color c, Location l, int s, int bc, int bs)
 	{
 		super(c, l);
@@ -24,16 +32,28 @@ public class Bomberman extends Inhabitant{
 		bombSize = bs;
 	}
 	
+	/**
+	 * Increases the bombCapacity by x amount
+	 * @param x
+	 */
 	public void increaseBombs(int x)
 	{
 		bombCapacity += x;
 	}
 	
+	/**
+	 * Sets bomberman's ability to kick
+	 * @param kick
+	 */
 	public void canKick(boolean kick)
 	{
 		kickBomb = kick;
 	}
 	
+	/**
+	 * increases bomberman's bomb size by x
+	 * @param x
+	 */
 	public void changeBombSize(int x)
 	{
 		bombSize += x;
