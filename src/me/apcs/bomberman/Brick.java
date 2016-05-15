@@ -4,16 +4,16 @@ import java.awt.Color;
 
 public class Brick extends Inhabitant
 {
-	private boolean breakable;
+	private boolean destroyable;
 	
-	public Brick(Color c, Location l, boolean b)
+	public Brick(Color c, Location l, boolean d)
 	{
 		super(c, l);
-		breakable = b;
+		destroyable = d;
 	}
 	
-	public boolean isBreakable()
+	public boolean isDestroyable()
 	{
-		return breakable; 
+		return destroyable; 
 	}
 }
