@@ -6,17 +6,29 @@ public class Bomb extends Inhabitant
 {
 	private int bombLength;
 	
+	/**
+	 * Initializes the bomb
+	 * @param c
+	 * @param l
+	 * @param b
+	 */
 	public Bomb (Color c, Location l, int b)
 	{
 		super(c, l);
 		bombLength = b;
 	}
 	
+	/**
+	 * @return bombLength
+	 */
 	public int getBombLength()
 	{
 		return bombLength;
 	}
 	
+	/**
+	 * Creates an explosion in each direction that is equal to bombLength
+	 */
 	public void explode()
 	{
 		Location l = this.getLocation();
