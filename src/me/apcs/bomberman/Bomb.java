@@ -19,13 +19,14 @@ public class Bomb extends Inhabitant
 	
 	public void explode()
 	{
-		this.destroy();
 		Location l = this.getLocation();
 		
 		for(int x = 0; x <= this.getBombLength(); x++)
 		{
 			boolean right = true;
 			boolean left = true;
+			boolean up = true;
+			boolean down = true;
 			
 			if (right == true)
 			{	
@@ -36,13 +37,14 @@ public class Bomb extends Inhabitant
 					{
 						right = false;
 						Brick b = (Brick)Game.getGrid().get(l);
-						if(b.isDestroyable())
+						if(b.isBreakable())
 							Game.getGrid().set(l,  new Explosion(super.getColor(), l));
 					}
 					else
 						Game.getGrid().set(l, new Explosion(super.getColor(), l));
 				}
 			}
+			
 			if(left == true)
 			{
 				l = new Location(this.getLocation().getIntX() - x, this.getLocation().getIntY());
@@ -52,30 +54,24 @@ public class Bomb extends Inhabitant
 					{
 						left = false;
 						Brick b = (Brick)Game.getGrid().get(l);
-						if (b.isDestroyable())
+						if (b.isBreakable())
 							Game.getGrid().set(l, new Explosion(super.getColor(), l));
 					}
 					else
 						Game.getGrid().set(l, new Explosion(super.getColor(), l));
 				}
 			}
-		}
-		
-		for (int y = 0; y <= this.getBombLength(); y++)
-		{
-			boolean up = true;
-			boolean down = true;
 			
 			if (up == true)
 			{
-				l = new Location(this.getLocation().getIntX(), this.getLocation().getIntY() + y);
+				l = new Location(this.getLocation().getIntX(), this.getLocation().getIntY() + x);
 				if (Game.getGrid().isValid(l))
 				{
 					if(Game.getGrid().get(l) instanceof Brick)
 					{
 						up = false;
 						Brick b = (Brick)Game.getGrid().get(l);
-						if(b.isDestroyable())
+						if(b.isBreakable())
 							Game.getGrid().set(l, new Explosion(super.getColor(), l));
 					}
 					else
@@ -85,21 +81,22 @@ public class Bomb extends Inhabitant
 			
 			if (down == true)
 			{
-				l = new Location(this.getLocation().getIntX(), this.getLocation().getIntY() - y);
+				l = new Location(this.getLocation().getIntX(), this.getLocation().getIntY() - x);
 				if(Game.getGrid().isValid(l))
 				{
 					if(Game.getGrid().get(l) instanceof Brick)
 					{
 						down = false;
 						Brick b = (Brick)Game.getGrid().get(l);
-						if(b.isDestroyable())
+						if(b.isBreakable())
 							Game.getGrid().set(l,  new Explosion(super.getColor(), l));
 					}
 					else
 						Game.getGrid().set(l, new Explosion(super.getColor(), l));
 				}
 			}
+			
+			this.destroy();
 		}
-		
 	}
 }
