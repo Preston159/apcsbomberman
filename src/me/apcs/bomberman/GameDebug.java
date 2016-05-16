@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.awt.event.KeyEvent;
 
 public class GameDebug extends JPanel implements ActionListener {
 	public static final int WIDTH = 500;
@@ -18,6 +19,7 @@ public class GameDebug extends JPanel implements ActionListener {
 	private Grid<Inhabitant> grid;
 	private List<Bomberman> players;
 	private double scaleX, scaleY;
+	private Keyboard keys;
 	
 	public GameDebug() {
 		//initialize timer
@@ -33,6 +35,7 @@ public class GameDebug extends JPanel implements ActionListener {
 		scaleY = HEIGHT / gridSizeY;
 		grid = new Grid<Inhabitant>(gridSizeX, gridSizeY);
 		players = new ArrayList<Bomberman>();
+		keys = new Keyboard();
 		
 		//add one Inhabitant
 		players.add(new Bomberman(Color.BLUE, new Location(0,0), 1, 1, 1));
@@ -46,7 +49,9 @@ public class GameDebug extends JPanel implements ActionListener {
 	}
 	
 	public void update() {
-		
+		if (keys.getKey(KeyEvent.VK_D)) {
+			players.get(0).move(0.1, 0.0);
+		}
 	}
 	
 	public void actionPerformed(ActionEvent e) {
