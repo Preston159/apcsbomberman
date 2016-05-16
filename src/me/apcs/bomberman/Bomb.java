@@ -34,13 +34,16 @@ public class Bomb extends Inhabitant
 		//sets l to bomb location
 		Location l = this.getLocation();
 		
+		//declare the boolean variables 
+		boolean right = true;
+		boolean left = true;
+		boolean up = true;
+		boolean down = true;
+		
 		//initiate for loop, while x <= Bomb Size
 		for(int x = 0; x <= this.getBombLength(); x++)
 		{
-			boolean right = true;
-			boolean left = true;
-			boolean up = true;
-			boolean down = true;
+			
 			
 			//if you haven't hit a wall, right is true
 			if (right == true)
