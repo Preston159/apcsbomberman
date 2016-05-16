@@ -157,4 +157,12 @@ public class Inhabitant {
 		g.setColor(color);
 		g.fillRect((int)(getLocation().getX() * scaleX), (int)(getLocation().getY() * scaleY), (int)(scaleX * size), (int)(scaleY * size));
 	}
+	
+	/**
+	 * Changes the size of the <code>Inhabitant</code>
+	 * @param s	The new size
+	 */
+	public void setSize(double s) {
+		size = s;
+	}
 }
