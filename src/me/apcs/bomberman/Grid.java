@@ -48,6 +48,24 @@ public class Grid<T> {
 	} //Grid
 	
 	/**
+	 * Gets the number of rows in <code>Grid</code>
+	 * 
+	 * @return the number of rows in <code>Grid</code>
+	 */
+	public int getNumRows() {
+		return tArr.length;
+	} //getNumRows
+	
+	/**
+	 * Gets the number of columns in <code>Grid</code>
+	 * 
+	 * @return the number of columns in <code>Grid</code>
+	 */
+	public int getNumCols() {
+		return tArr[0].length;
+	} //getNumCols
+	
+	/**
 	 * Determines if the coordinates of a <code>Location</code> object are in range
 	 * 
 	 * @param l the <code>Location</code> to be checked for validity
