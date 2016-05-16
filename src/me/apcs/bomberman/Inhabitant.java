@@ -9,6 +9,7 @@
 package me.apcs.bomberman;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Inhabitant {
 	
@@ -19,6 +20,8 @@ public class Inhabitant {
 	private Color color;
 	private Location loc;
 	private double speed;
+	private double size;
+	
 	
 	/**
 	 * Create <code>Inhabitant</code>
@@ -29,6 +32,7 @@ public class Inhabitant {
 		color = c;
 		loc = l;
 		speed = 0d;
+		size = 0.45;
 	}
 	
 	/**
@@ -147,5 +151,10 @@ public class Inhabitant {
 		default:
 			throw new IllegalArgumentException("Invalid step direction");
 		}
+	}
+	public void render(Graphics g, double scaleX, double scaleY)
+	{
+		g.setColor(color);
+		g.fillRect((int)(getLocation().getX() * scaleX), (int)(getLocation().getY() * scaleY), (int)(scaleX * size), (int)(scaleY * size));
 	}
 }
