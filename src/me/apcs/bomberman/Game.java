@@ -42,16 +42,11 @@ public class Game {
 				new TimerTask() {
 					@Override
 					public void run() {
-						ArrayList<Inhabitant> inhabitants = new ArrayList<Inhabitant>();
-						for(int a = 0;a < grid.getNumRows();a++)
-							for(int b = 0;b < grid.getNumCols();b++) {
-								Inhabitant i = grid.get(new Location(a, b));
+						for(Inhabitant i : grid.getAll())
+						{		
 								if(i == null)
 									continue;
-								inhabitants.add(i);
-							}
-						for(Inhabitant i : inhabitants) {
-							if(i instanceof Explosion)
+								if(i instanceof Explosion)
 								//add one to all Bomb
 								((Explosion) i).incrementState();
 						}
