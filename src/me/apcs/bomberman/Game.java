@@ -2,8 +2,12 @@ package me.apcs.bomberman;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Game {
+	
+	private static int tickLength;
 	
 	private static Grid<Inhabitant> grid;
 	private static List<Bomberman> players;
@@ -12,6 +16,7 @@ public class Game {
 		Settings.init();
 		int sizeX = Integer.valueOf(Settings.p.getProperty("gridSizeX"));
 		int sizeY = Integer.valueOf(Settings.p.getProperty("gridSizeY"));
+		tickLength = (int) ((double) 1 / Integer.valueOf(Settings.p.getProperty("ticksPerSecond")) * 1000);
 		grid = new Grid<Inhabitant>(sizeX, sizeY);
 		players = new ArrayList<Bomberman>();
 	}
@@ -30,6 +35,38 @@ public class Game {
 	 */
 	public static List<Bomberman> getPlayers() {
 		return players;
+	}
+	
+	public static void tick() {
+		new Timer().schedule(
+				new TimerTask() {
+					@Override
+					public void run() {
+						ArrayList<Inhabitant> inhabitants = new ArrayList<Inhabitant>();
+						for(int a = 0;a < grid.getNumRows();a++)
+							for(int b = 0;b < grid.getNumCols();b++) {
+								Inhabitant i = grid.get(new Location(a, b));
+								if(i == null)
+									continue;
+								inhabitants.add(i);
+							}
+						for(Inhabitant i : inhabitants) {
+							if(i instanceof Explosion)
+								//add one to all Bomb
+								((Explosion) i).incrementState();
+						}
+						render();
+						tick();
+					}
+				}, tickLength
+		);
+	}
+	
+	/**
+	 * Render the game GUI
+	 */
+	private static void render() {
+		
 	}
 	
 }
