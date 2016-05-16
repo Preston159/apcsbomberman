@@ -59,4 +59,32 @@ public class Bomberman extends Inhabitant{
 		bombSize += x;
 	}
 	
+	/**
+	 * 
+	 * @return bombCapacity
+	 */
+	public int getBombCapacity()
+	{
+		return bombCapacity;
+	}
+	
+	/**
+	 * 
+	 * @return kickBomb
+	 */
+	public boolean getCanKick()
+	{
+		return kickBomb;
+	}
+	
+	/**
+	 * 
+	 * @return bombSize
+	 */
+	public int getBombSize()
+	{
+		return bombSize;
+	}
+	
+	
 }
