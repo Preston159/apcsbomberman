@@ -7,19 +7,22 @@
 
 package me.apcs.bomberman;
 
-import java.util.Arrays;
 import java.util.ArrayList;
 
-public class Grid<T> {
-	//declare field
-	private Object[][] tArr;
+public class Grid<T extends Inhabitant> {
+	//declare fields
+	private int rows;
+	private int cols;
+	private ArrayList<T> tList;
 	
 	/**
 	 * Constructs a <code>Grid</code> object with 10 rows and columns
 	 */
 	public Grid() {
-		//initialize field
-		this.tArr = new Object[10][10];
+		//initialize fields
+		this.rows = 10;
+		this.cols = 10;
+		this.tList = new ArrayList<>();
 	} //Grid
 	
 	/**
@@ -43,8 +46,10 @@ public class Grid<T> {
 			throw new IllegalArgumentException("cols <= 0");
 		} //end if
 		
-		//initialize field
-		this.tArr = new Object[rows][cols];
+		//initialize fields
+		this.rows = 10;
+		this.cols = 10;
+		this.tList = new ArrayList<>();
 	} //Grid
 	
 	/**
@@ -53,7 +58,7 @@ public class Grid<T> {
 	 * @return the number of rows in <code>Grid</code>
 	 */
 	public int getNumRows() {
-		return tArr.length;
+		return this.rows;
 	} //getNumRows
 	
 	/**
@@ -62,7 +67,7 @@ public class Grid<T> {
 	 * @return the number of columns in <code>Grid</code>
 	 */
 	public int getNumCols() {
-		return tArr[0].length;
+		return this.cols;
 	} //getNumCols
 	
 	/**
@@ -72,126 +77,101 @@ public class Grid<T> {
 	 * @return <code>true</code> - if <code>l</code>'s coordinates are in range
 	 */
 	public boolean isValid(Location l) {
-		//determine if l's x coordinate is valid
-		if (l.getIntX() >= 0 && l.getIntX() < this.tArr.length) {
-			//determine if l's y coordinate is valid
-			if (l.getIntY() >= 0 && l.getIntY() < this.tArr[0].length) {
-				return true;
-			} //end if
-		} //end if
-		
-		return false;
+		return (l.getIntX() >= 0 && l.getIntX() < getNumRows()) && (l.getIntY() >= 0 && l.getIntY() < getNumCols());
 	} //isValid
 	
 	/**
-	 * Adds an object at the next available position
+	 * Adds an object to the <code>Grid</code>
 	 * 
 	 * @param t the object needing to be added
-	 * @return <code>true</code> - if <code>t</code> is successfully added
+	 * @return <code>true</code> - if the <code>Grid</code> is successfully changed
 	 */
 	public boolean add(T t) {
-		//traverse tArr rows
-		for (int i = 0; i < this.tArr.length; i++) {
-			//traverse tArr columns
-			for (int j = 0; j < this.tArr[0].length; j++) {
-				//determine if element is null
-				if (this.tArr[i][j] == null) {
-					//add t at element position
-					this.tArr[i][j] = t;
-					
-					return true;
-				} //end if
-			} //end for
-		} //end for
-		
-		return false;
+		return this.tList.add(t);
 	} //add
 	
 	/**
-	 * Gets an object at a specified <code>Location</code>
+	 * Gets all object at a specified <code>Location</code>
 	 * 
 	 * @param l contains the <code>Location</code> of the object needing to be received
-	 * @return the element at the specified position - if <code>l</code> is valid
+	 * @return the elements at the specified position - if <code>l</code> is valid
 	 * @throws <code>IndexOutOfBoundsException</code> - if <code>l</code>'s coordinates are not in range
 	 */
-	@SuppressWarnings("unchecked")
-	public T get(Location l) throws IndexOutOfBoundsException {
+	public ArrayList<T> get(Location l) throws IndexOutOfBoundsException {
 		//determine if l is a valid location
 		if (isValid(l)) {
-			return (T) tArr[l.getIntX()][l.getIntY()];
+			//declare variable
+			ArrayList<T> tempList = new ArrayList<>();
+			
+			//traverse tList, filter out elements, and add remaining elements to tempList
+			this.tList.stream().filter(t -> t.getLocation().inSameSquare(l)).forEach(t -> tempList.add(t));
+			
+			return tempList;
 		} //end if
 		
 		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //get
 	
 	/**
-	 * Sets an object at a specified <code>Location</code>
+	 * Sets all objects at a specified <code>Location</code> new a new value
 	 * 
 	 * @param l contains the <code>Location</code> of the object needing to be edited
 	 * @param newT the new value to replace the existing one
-	 * @return the element previously at the specified position - if <code>l</code> is valid
+	 * @return the elements previously at the specified position - if <code>l</code> is valid
 	 * @throws <code>IndexOutOfBoundsException</code> - if <code>l</code>'s coordinates are not in range
 	 */
-	public T set(Location l, T newT) throws IndexOutOfBoundsException {
+	public ArrayList<T> set(Location l, T newT) throws IndexOutOfBoundsException {
 		//determine if l is a valid location
 		if (isValid(l)) {
-			//get old value at l
-			T oldT = this.get(l);
+			//declare variable
+			ArrayList<T> tempList = new ArrayList<>();
 			
-			//set element at l to newT
-			tArr[l.getIntX()][l.getIntY()] = newT;
+			//traverse tList, filter out elements, store old elements in tempList, and set remaining elements to newT
+			this.tList.stream().filter(t -> t.getLocation().inSameSquare(l)).forEach(t -> {tempList.add(t); tList.set(tList.indexOf(t), newT);});
 			
-			return oldT;
+			return tempList;
 		} //end if
 		
 		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //set
 	
 	/**
-	 * Removes an object at a specified <code>Location</code>
+	 * Removes all objects at a specific <code>Location</code>
 	 * 
 	 * @param l contains the <code>Location</code> of the object needing to be removed
-	 * @return the element previously at the specified position - if <code>l</code> is valid
 	 * @throws <code>IndexOutOfBoundsException</code> - if <code>l</code>'s coordinates are not in range
 	 */
-	public T remove(Location l) throws IndexOutOfBoundsException {
+	public void remove(Location l) throws IndexOutOfBoundsException {
 		//determine if l is a valid location
 		if (isValid(l)) {
-			//get old value at l
-			T oldT = this.get(l);
-					
-			//set element at l to null
-			tArr[l.getIntX()][l.getIntY()] = null;
-					
-			return oldT;
+			//traverse tList and remove elements with a matching location
+			this.tList.removeIf(t -> t.getLocation().inSameSquare(l));
+			
+			return;
 		} //end if
 		
 		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //remove
 	
 	/**
-	 * Gets all of the locations that are currently occupied
+	 * Removes all objects of a specific <code>Inhabitant</code> type
 	 * 
-	 * @return an <code>ArrayList</code> of all the occupied locations
+	 * @param i contains the <code>Inhabitant</code> type needing to be removed
 	 */
-	public ArrayList<Location> getOccupiedLocations() {
-		//declare variable
-		ArrayList<Location> occupiedLocs = new ArrayList<>();
-		
-		//traverse tArr rows
-		for (int i = 0; i < this.tArr.length; i++) {
-			//traverse tArr columns
-			for (int j = 0; j < this.tArr[0].length; j++) {
-				//determine if location is occupied
-				if (tArr[i][j] != null) {
-					//add new location to occupiedLocs
-					occupiedLocs.add(new Location(i, j));
-				} //end if
-			} //end for
-		} //end for
-		
-		return occupiedLocs;
-	} //getOccupiedLocations
+	public void remove(Inhabitant i) {
+		//traverse tList and remove elements with a Inhabitant type
+		this.tList.removeIf(t -> t.getClass().equals(i.getClass()));
+	} //remove
+	
+	/**
+	 * Removes all objects at a specific <code>Location</code> with a specific <code>Inhabitant</code> type
+	 * 
+	 * @param i contains the <code>Inhabitant</code> type needing to be removed
+	 */
+	public void remove(Location l, Inhabitant i) {
+		//traverse tList and remove elements with a Inhabitant type
+		this.tList.removeIf(t -> t.getLocation().inSameSquare(l) && t.getClass().equals(i.getClass()));
+	} //remove
 	
 	/**
 	 * Returns a string representation of the contents of a <code>Grid</code> object
@@ -200,6 +180,6 @@ public class Grid<T> {
 	 */
 	@Override
 	public String toString() {
-		return Arrays.toString(tArr);
+		return this.tList.toString();
 	} //toString
 }
