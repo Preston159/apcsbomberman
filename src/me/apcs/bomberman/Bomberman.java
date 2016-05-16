@@ -88,6 +88,7 @@ public class Bomberman extends Inhabitant{
 	
 	public void givePowerUp(Powerup p)
 	{
+		p.setBomber(this);
 		p.powerUp();
 		p.destroy();
 	}
