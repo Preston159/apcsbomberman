@@ -36,13 +36,11 @@ public class Grid<T extends Inhabitant> {
 	public Grid(int rows, int cols) throws IllegalArgumentException {
 		//determine if rows is valid
 		if (rows <= 0) {
-			//throw IllegalArgumentException
 			throw new IllegalArgumentException("rows <= 0");
 		} //end if
 		
 		//determine if cols is valid
 		if (cols <= 0) {
-			//throw IllegalArgumentException
 			throw new IllegalArgumentException("cols <= 0");
 		} //end if
 		
@@ -91,7 +89,23 @@ public class Grid<T extends Inhabitant> {
 	} //add
 	
 	/**
-	 * Gets all object at a specified <code>Location</code>
+	 * Gets the object at a specific index
+	 * 
+	 * @param i contains the index of the object needing to be received
+	 * @return the element at the specified position - if <code>i</code> is valid
+	 * @throws <code>IndexOutOfBoundsException</code> - if <code>i</code> is not in range
+	 */
+	public T get(int i) throws IndexOutOfBoundsException {
+		//determine if i is in range
+		if (i >= 0 && i < this.tList.size()) {
+			return this.tList.get(i);
+		} //end if
+		
+		throw new IndexOutOfBoundsException("i is not in range!");
+	} //get
+	
+	/**
+	 * Gets all object at a specific <code>Location</code> in the <code>Grid</code>
 	 * 
 	 * @param l contains the <code>Location</code> of the object needing to be received
 	 * @return the elements at the specified position - if <code>l</code> is valid
@@ -103,7 +117,7 @@ public class Grid<T extends Inhabitant> {
 			//declare variable
 			ArrayList<T> tempList = new ArrayList<>();
 			
-			//traverse tList, filter out elements, and add remaining elements to tempList
+			//traverse tList, filter out elements by Location, and add remaining elements to tempList
 			this.tList.stream().filter(t -> t.getLocation().inSameSquare(l)).forEach(t -> tempList.add(t));
 			
 			return tempList;
@@ -113,7 +127,7 @@ public class Grid<T extends Inhabitant> {
 	} //get
 	
 	/**
-	 * Sets all objects at a specified <code>Location</code> new a new value
+	 * Sets all objects at a specific <code>Location</code> new a new value in the <code>Grid</code>
 	 * 
 	 * @param l contains the <code>Location</code> of the object needing to be edited
 	 * @param newT the new value to replace the existing one
@@ -126,7 +140,7 @@ public class Grid<T extends Inhabitant> {
 			//declare variable
 			ArrayList<T> tempList = new ArrayList<>();
 			
-			//traverse tList, filter out elements, store old elements in tempList, and set remaining elements to newT
+			//traverse tList, filter out elements by Location, store old elements in tempList, and set remaining elements to newT
 			this.tList.stream().filter(t -> t.getLocation().inSameSquare(l)).forEach(t -> {tempList.add(t); tList.set(tList.indexOf(t), newT);});
 			
 			return tempList;
@@ -136,7 +150,7 @@ public class Grid<T extends Inhabitant> {
 	} //set
 	
 	/**
-	 * Removes all objects at a specific <code>Location</code>
+	 * Removes all objects at a specific <code>Location</code> in the <code>Grid</code>
 	 * 
 	 * @param l contains the <code>Location</code> of the object needing to be removed
 	 * @throws <code>IndexOutOfBoundsException</code> - if <code>l</code>'s coordinates are not in range
@@ -144,7 +158,7 @@ public class Grid<T extends Inhabitant> {
 	public void remove(Location l) throws IndexOutOfBoundsException {
 		//determine if l is a valid location
 		if (isValid(l)) {
-			//traverse tList and remove elements with a matching location
+			//traverse tList and remove elements with a matching Location
 			this.tList.removeIf(t -> t.getLocation().inSameSquare(l));
 			
 			return;
@@ -159,7 +173,7 @@ public class Grid<T extends Inhabitant> {
 	 * @param i contains the <code>Inhabitant</code> type needing to be removed
 	 */
 	public void remove(Inhabitant i) {
-		//traverse tList and remove elements with a Inhabitant type
+		//traverse tList and remove elements with a matching Inhabitant type
 		this.tList.removeIf(t -> t.getClass().equals(i.getClass()));
 	} //remove
 	
@@ -169,7 +183,7 @@ public class Grid<T extends Inhabitant> {
 	 * @param i contains the <code>Inhabitant</code> type needing to be removed
 	 */
 	public void remove(Location l, Inhabitant i) {
-		//traverse tList and remove elements with a Inhabitant type
+		//traverse tList and remove elements with a matching Location and Inhabitant type
 		this.tList.removeIf(t -> t.getLocation().inSameSquare(l) && t.getClass().equals(i.getClass()));
 	} //remove
 	
