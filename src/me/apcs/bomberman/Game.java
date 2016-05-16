@@ -16,7 +16,7 @@ public class Game {
 		Settings.init();
 		int sizeX = Integer.valueOf(Settings.p.getProperty("gridSizeX"));
 		int sizeY = Integer.valueOf(Settings.p.getProperty("gridSizeY"));
-		tickLength = (int) ((double) 60 / Integer.valueOf(Settings.p.getProperty("ticksPerSecond")) * 1000);
+		tickLength = (int) ((double) 1 / Integer.valueOf(Settings.p.getProperty("ticksPerSecond")) * 1000);
 		grid = new Grid<Inhabitant>(sizeX, sizeY);
 		players = new ArrayList<Bomberman>();
 	}
