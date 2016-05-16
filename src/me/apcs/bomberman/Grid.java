@@ -28,8 +28,8 @@ public class Grid<T extends Inhabitant> {
 	/**
 	 * Constructs a <code>Grid</code> object with a specified number of rows and columns
 	 * 
-	 * @param rows number of rows in <code>Grid</code>
-	 * @param cols number of columns in <code>Grid</code>
+	 * @param rows number of rows in the <code>Grid</code>
+	 * @param cols number of columns in the <code>Grid</code>
 	 * @throws <code>IllegalArgumentException</code> if <code>rows</code> is not in range
 	 * @throws <code>IllegalArgumentException</code> if <code>cols</code> is not in range
 	 */
@@ -51,18 +51,18 @@ public class Grid<T extends Inhabitant> {
 	} //Grid
 	
 	/**
-	 * Gets the number of rows in <code>Grid</code>
+	 * Gets the number of rows in the <code>Grid</code>
 	 * 
-	 * @return the number of rows in <code>Grid</code>
+	 * @return the number of rows in the <code>Grid</code>
 	 */
 	public int getNumRows() {
 		return this.rows;
 	} //getNumRows
 	
 	/**
-	 * Gets the number of columns in <code>Grid</code>
+	 * Gets the number of columns in the <code>Grid</code>
 	 * 
-	 * @return the number of columns in <code>Grid</code>
+	 * @return the number of columns in the <code>Grid</code>
 	 */
 	public int getNumCols() {
 		return this.cols;
@@ -89,7 +89,7 @@ public class Grid<T extends Inhabitant> {
 	} //add
 	
 	/**
-	 * Gets the object at a specific index
+	 * Gets the object at a specified index in the <code>Grid</code>
 	 * 
 	 * @param i contains the index of the object needing to be received
 	 * @return the element at the specified position - if <code>i</code> is valid
@@ -105,7 +105,7 @@ public class Grid<T extends Inhabitant> {
 	} //get
 	
 	/**
-	 * Gets all object at a specific <code>Location</code> in the <code>Grid</code>
+	 * Gets all objects at a specified <code>Location</code> in the <code>Grid</code>
 	 * 
 	 * @param l contains the <code>Location</code> of the object needing to be received
 	 * @return the elements at the specified position - if <code>l</code> is valid
@@ -127,7 +127,7 @@ public class Grid<T extends Inhabitant> {
 	} //get
 	
 	/**
-	 * Sets all objects at a specific <code>Location</code> new a new value in the <code>Grid</code>
+	 * Sets all objects at a specified <code>Location</code> to a new value in the <code>Grid</code>
 	 * 
 	 * @param l contains the <code>Location</code> of the object needing to be edited
 	 * @param newT the new value to replace the existing one
@@ -140,7 +140,7 @@ public class Grid<T extends Inhabitant> {
 			//declare variable
 			ArrayList<T> tempList = new ArrayList<>();
 			
-			//traverse tList, filter out elements by Location, store old elements in tempList, and set remaining elements to newT
+			//traverse tList, filter out elements by Location, store old elements in tempList, and set old elements to newT
 			this.tList.stream().filter(t -> t.getLocation().inSameSquare(l)).forEach(t -> {tempList.add(t); tList.set(tList.indexOf(t), newT);});
 			
 			return tempList;
@@ -150,9 +150,9 @@ public class Grid<T extends Inhabitant> {
 	} //set
 	
 	/**
-	 * Removes all objects at a specific <code>Location</code> in the <code>Grid</code>
+	 * Removes all objects at a specified <code>Location</code> in the <code>Grid</code>
 	 * 
-	 * @param l contains the <code>Location</code> of the object needing to be removed
+	 * @param l contains the <code>Location</code> of the objects needing to be removed
 	 * @throws <code>IndexOutOfBoundsException</code> - if <code>l</code>'s coordinates are not in range
 	 */
 	public void remove(Location l) throws IndexOutOfBoundsException {
@@ -168,9 +168,9 @@ public class Grid<T extends Inhabitant> {
 	} //remove
 	
 	/**
-	 * Removes all objects of a specific <code>Inhabitant</code> type
+	 * Removes all objects of a specified <code>Inhabitant</code> type in the <code>Grid</code>
 	 * 
-	 * @param i contains the <code>Inhabitant</code> type needing to be removed
+	 * @param i contains the <code>Inhabitant</code> type of the objects needing to be removed
 	 */
 	public void remove(Inhabitant i) {
 		//traverse tList and remove elements with a matching Inhabitant type
@@ -178,9 +178,10 @@ public class Grid<T extends Inhabitant> {
 	} //remove
 	
 	/**
-	 * Removes all objects at a specific <code>Location</code> with a specific <code>Inhabitant</code> type
+	 * Removes all objects at a specified <code>Location</code> with a specified <code>Inhabitant</code> type in the <code>Grid</code>
 	 * 
-	 * @param i contains the <code>Inhabitant</code> type needing to be removed
+	 * @param l contains the <code>Location</code> of the objects needing to be removed
+	 * @param i contains the <code>Inhabitant</code> type of the objects needing to be removed
 	 */
 	public void remove(Location l, Inhabitant i) {
 		//traverse tList and remove elements with a matching Location and Inhabitant type
@@ -188,9 +189,9 @@ public class Grid<T extends Inhabitant> {
 	} //remove
 	
 	/**
-	 * Returns a string representation of the contents of a <code>Grid</code> object
+	 * Returns a <code>String</code> representation of the contents of a <code>Grid</code> object
 	 * 
-	 * @return a string of all the elements in the <code>Grid</code>
+	 * @return a <code>String</code> of all the elements in the <code>Grid</code>
 	 */
 	@Override
 	public String toString() {
