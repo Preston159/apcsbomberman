@@ -54,7 +54,7 @@ public class MenuJFrame extends JFrame {
 		JLabel label = new JLabel("");
 		label.setBounds(0, 0, 310, 144);
 		panel.add(label);
-		label.setIcon(new ImageIcon("C:\\Users\\132124\\Documents\\GitHub\\apcsbomberman\\intro.png"));
+		label.setIcon(new ImageIcon("intro.png"));
 	} //MenuJFrame
 	
 	public static void main(String[] args) {
