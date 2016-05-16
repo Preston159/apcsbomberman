@@ -5,6 +5,7 @@ package me.apcs.bomberman;
 
 public class Location {
 	private double x, y;
+	public static final int RIGHT = 0, DOWN = 1, LEFT = 2, UP = 3;
 
 	public Location (int xx, int yy) {
 		x = xx + 0.5;
@@ -40,5 +41,32 @@ public class Location {
 	 */
 	public boolean inSameSquare(Location other) {
 		return (this.getIntX() == other.getIntX() && this.getIntY() == other.getIntY());
+	}
+	
+	/**
+	 * returns the direction of the location the object is moving to
+	 * 
+	 * this is the current location(first)
+	 * @param l is the location the object is moving to(second)
+	 * @return
+	 */
+	public int getDirection(Location l)	
+	{
+		if (this.getX()!=l.getX())
+		{
+			if (l.getX() > this.getX())
+			{
+				return RIGHT;
+			}
+			return LEFT;
+		}
+		else
+		{
+			if (l.getY() > this.getY())
+			{
+				return DOWN;
+			}
+			return UP;
+		}
 	}
 }
