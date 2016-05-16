@@ -147,7 +147,7 @@ public class Grid<T> {
 					
 			return oldT;
 		} //end if
-				
+		
 		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //remove
 	
@@ -176,9 +176,9 @@ public class Grid<T> {
 	} //getOccupiedLocations
 	
 	/**
-	 * Returns a string representation of the contents of a <code>Grid</object> object
+	 * Returns a string representation of the contents of a <code>Grid</code> object
 	 * 
-	 * @return a string of all the elements in the grid
+	 * @return a string of all the elements in the <code>Grid</code>
 	 */
 	@Override
 	public String toString() {
