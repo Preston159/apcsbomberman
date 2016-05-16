@@ -127,6 +127,16 @@ public class Grid<T extends Inhabitant> {
 	} //get
 	
 	/**
+	 * Gets all objects in the <code>Grid</code>
+	 * 
+	 * @return	the elements contained in the <code>Grid</code>
+	 */
+	public ArrayList<T> getAll() {
+		//return tList
+		return this.tList;
+	}
+	
+	/**
 	 * Sets all objects at a specified <code>Location</code> to a new value in the <code>Grid</code>
 	 * 
 	 * @param l contains the <code>Location</code> of the object needing to be edited
