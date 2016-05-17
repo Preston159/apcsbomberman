@@ -89,6 +89,15 @@ public class Grid<T extends Inhabitant> {
 	} //add
 	
 	/**
+	 * Gets all objects contained in the <code>Grid</code>
+	 * 
+	 * @return the elements contained in the <code>Grid</code>
+	 */
+	public ArrayList<T> getAll() {
+		return this.tList;
+	} //getAll
+	
+	/**
 	 * Gets the object at a specified index in the <code>Grid</code>
 	 * 
 	 * @param i contains the index of the object needing to be received
@@ -125,16 +134,6 @@ public class Grid<T extends Inhabitant> {
 		
 		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //get
-	
-	/**
-	 * Gets all objects in the <code>Grid</code>
-	 * 
-	 * @return	the elements contained in the <code>Grid</code>
-	 */
-	public ArrayList<T> getAll() {
-		//return tList
-		return this.tList;
-	}
 	
 	/**
 	 * Sets all objects at a specified <code>Location</code> to a new value in the <code>Grid</code>
