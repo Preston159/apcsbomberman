@@ -72,11 +72,17 @@ public class Bomb extends Inhabitant
 						Brick b = (Brick)Game.getGrid().get(l).get(nn);
 						//	if the brick is breakable, set the location of the brick to an explosion
 						if(b.isBreakable())
-							Game.getGrid().set(l,  new Explosion(super.getColor(), l));
+						{
+							Game.getGrid().remove(l);
+							Game.getGrid().add(new Explosion(super.getColor(), l));
+						}
 						//if it isn't a brick, set space to explosion
 					}
 					else
-							Game.getGrid().set(l, new Explosion(super.getColor(), l));
+					{
+						Game.getGrid().remove(l);
+						Game.getGrid().add(new Explosion(super.getColor(), l));
+					}
 				}
 				nn = 0;
 				c = false;
@@ -85,6 +91,7 @@ public class Bomb extends Inhabitant
 			//if you haven't hit a wall, left is true
 			if (left == true)
 			{	
+				
 				//sets l x right of the location of the bomb
 				l = new Location(this.getLocation().getIntX() - x, this.getLocation().getIntY());
 				//if l is a valid location on the grid
@@ -106,11 +113,17 @@ public class Bomb extends Inhabitant
 						Brick b = (Brick)Game.getGrid().get(l).get(nn);
 						//	if the brick is breakable, set the location of the brick to an explosion
 						if(b.isBreakable())
-							Game.getGrid().set(l,  new Explosion(super.getColor(), l));
+						{
+							Game.getGrid().remove(l);
+							Game.getGrid().add(new Explosion(super.getColor(), l));
+						}
 						//if it isn't a brick, set space to explosion
 					}
 					else
-							Game.getGrid().set(l, new Explosion(super.getColor(), l));
+					{
+						Game.getGrid().remove(l);
+						Game.getGrid().add(new Explosion(super.getColor(), l));
+					}
 				}
 				nn = 0;
 				c = false;
@@ -119,6 +132,7 @@ public class Bomb extends Inhabitant
 			//if you haven't hit a wall yet, up is true
 			if (up == true)
 			{	
+				
 				//sets l x right of the location of the bomb
 				l = new Location(this.getLocation().getIntX(), this.getLocation().getIntY() + x);
 				//if l is a valid location on the grid
@@ -140,11 +154,17 @@ public class Bomb extends Inhabitant
 						Brick b = (Brick)Game.getGrid().get(l).get(nn);
 						//	if the brick is breakable, set the location of the brick to an explosion
 						if(b.isBreakable())
-							Game.getGrid().set(l,  new Explosion(super.getColor(), l));
+						{
+							Game.getGrid().remove(l);
+							Game.getGrid().add(new Explosion(super.getColor(), l));
+						}
 						//if it isn't a brick, set space to explosion
 					}
 					else
-							Game.getGrid().set(l, new Explosion(super.getColor(), l));
+					{
+						Game.getGrid().remove(l);
+						Game.getGrid().add(new Explosion(super.getColor(), l));
+					}
 				}
 				nn = 0;
 				c = false;
@@ -153,6 +173,7 @@ public class Bomb extends Inhabitant
 			//if you haven't hit a wall yet, down is true
 			if (down == true)
 			{	
+				
 				//sets l x right of the location of the bomb
 				l = new Location(this.getLocation().getIntX(), this.getLocation().getIntY() - x);
 				//if l is a valid location on the grid
@@ -174,11 +195,17 @@ public class Bomb extends Inhabitant
 						Brick b = (Brick)Game.getGrid().get(l).get(nn);
 						//	if the brick is breakable, set the location of the brick to an explosion
 						if(b.isBreakable())
-							Game.getGrid().set(l,  new Explosion(super.getColor(), l));
+						{
+							Game.getGrid().remove(l);
+							Game.getGrid().add(new Explosion(super.getColor(), l));
+						}
 						//if it isn't a brick, set space to explosion
 					}
 					else
-							Game.getGrid().set(l, new Explosion(super.getColor(), l));
+					{
+						Game.getGrid().remove(l);
+						Game.getGrid().add(new Explosion(super.getColor(), l));
+					}
 				}
 				nn = 0;
 				c = false;
