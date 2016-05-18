@@ -36,6 +36,7 @@ public class GameDebug extends JPanel implements ActionListener {
 		grid = new Grid<Inhabitant>(gridSizeX, gridSizeY);
 		players = new ArrayList<Bomberman>();
 		keys = new Keyboard();
+		addKeyListener(keys);
 		
 		//add one Inhabitant
 		players.add(new Bomberman(Color.BLUE, new Location(0,0), 1, 1, 1));
@@ -43,8 +44,8 @@ public class GameDebug extends JPanel implements ActionListener {
 	}
 	
 	public void render() {
-		for (Location loc : grid.getOccupiedLocations()) {
-			grid.get(loc).render(this.getGraphics(), scaleX, scaleY);
+		for (Inhabitant i : grid.getAll()) {
+			i.render(this.getGraphics(), scaleX, scaleY);
 		}
 	}
 	
