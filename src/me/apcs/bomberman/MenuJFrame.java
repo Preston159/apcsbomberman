@@ -6,8 +6,6 @@
 package me.apcs.bomberman;
 
 import java.awt.EventQueue;
-import java.awt.HeadlessException;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -22,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.Scanner;
+
 public class MenuJFrame extends JFrame {
 	//declare fields
 	private static final long serialVersionUID = -5402450417506587103L;
@@ -40,7 +39,7 @@ public class MenuJFrame extends JFrame {
 		
 		//create JPanel object and initialize
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 9, 310, 198);
+		panel.setBounds(17, 15, 310, 198);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
