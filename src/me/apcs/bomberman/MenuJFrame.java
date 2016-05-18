@@ -124,14 +124,13 @@ public class MenuJFrame extends JFrame {
 			File file = new File(path);
 			StringBuffer strBuffer = new StringBuffer((int)file.length());
 			BufferedReader input = new BufferedReader(new FileReader(file));
-			Scanner check = null;
 			String line = "";
 			while ((line = input.readLine()) != null)
 			{
 				strBuffer.append(line);
 				strBuffer.append("\n");
 			}
-			
+			input.close();
 			return strBuffer;
 		}
 		catch (IOException io)
