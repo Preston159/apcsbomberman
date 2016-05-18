@@ -110,11 +110,10 @@ public class Inhabitant {
 	 */
 	public boolean canMove(Grid<Inhabitant> g, Location l) {
 		Location player = this.getLocation();
-		if(player.inSameSquare(l) == true)
-			return true;
-		if(g.get(l) instanceof Bomberman || g.get(l) instanceof Powerup)
-			return true;
-		return false;
+		for(Inhabitant i : g.getAll())
+			if(i.getLocation().inSameSquare(player) && !(i instanceof Bomberman || i instanceof Powerup))
+				return false;
+		return true;
 	}
 	
 	/**
