@@ -14,11 +14,18 @@ public class Game {
 	
 	public static void main(String[] args) {
 		Settings.init();
+		tickLength = (int) ((double) 1 / Integer.valueOf(Settings.p.getProperty("ticksPerSecond")) * 1000);
+		createGrid();
+		players = new ArrayList<Bomberman>();
+	}
+	
+	/**
+	 * Creates a <code>Grid</code> and stores it in the <code>grid</code> field
+	 */
+	public static void createGrid() {
 		int sizeX = Integer.valueOf(Settings.p.getProperty("gridSizeX"));
 		int sizeY = Integer.valueOf(Settings.p.getProperty("gridSizeY"));
-		tickLength = (int) ((double) 1 / Integer.valueOf(Settings.p.getProperty("ticksPerSecond")) * 1000);
 		grid = new Grid<Inhabitant>(sizeX, sizeY);
-		players = new ArrayList<Bomberman>();
 	}
 	
 	/**
@@ -46,8 +53,8 @@ public class Game {
 							if(i == null)
 								continue;
 							if(i instanceof Explosion)
-							//increment all Bomb animations
-							((Explosion) i).incrementState();
+								//increment all Bomb animations
+								((Explosion) i).incrementState();
 						}
 						render();
 						tick();
