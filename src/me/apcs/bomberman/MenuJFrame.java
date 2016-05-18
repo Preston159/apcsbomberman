@@ -37,7 +37,7 @@ public class MenuJFrame extends JFrame {
 		
 		//create JPanel object and initialize
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 9, 310, 198);
+		panel.setBounds(17, 15, 310, 198);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
