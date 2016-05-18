@@ -43,18 +43,20 @@ public class MenuJFrame extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+	// beginning of play button, moved to menu bar but in case y'all want to shift back old code is here
 		//create JButton object, initialize, and add ActionListener
-		JButton playJButton = new JButton("Play");
-		playJButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//load game
-				JOptionPane.showMessageDialog(contentPane, "Game loads here.", "Bomberman", JOptionPane.INFORMATION_MESSAGE);
-			}
-		});
-		playJButton.setBounds(0, 155, 310, 43);
+		//JButton playJButton = new JButton("Play");
+		//playJButton.addActionListener(new ActionListener() {
+		//	public void actionPerformed(ActionEvent arg0) {
+		//		//load game
+		//		JOptionPane.showMessageDialog(contentPane, "Game loads here.", "Bomberman", JOptionPane.INFORMATION_MESSAGE);
+		//	}
+		//});
+		//playJButton.setBounds(0, 155, 310, 43);
 		
 		//add playJButton to panel
-		panel.add(playJButton);
+		//panel.add(playJButton);
+	// 	end of play button
 		
 		//create JLabel object and initialize
 		JLabel label = new JLabel("");
@@ -67,25 +69,32 @@ public class MenuJFrame extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnGame = new JMenu("Game");
+		JMenuItem play = new JMenuItem("Play");
 		JMenuItem help = new JMenuItem("Help");
 		JMenuItem exit = new JMenuItem("Exit");
 		JMenuItem highScores = new JMenuItem("High Scores");
 		menuBar.add(mnGame);
+		mnGame.add(play);
 		mnGame.add(help);
 		mnGame.add(exit);
 		mnGame.add(highScores);
-		help.addActionListener(new ActionListener() {
+		play.addActionListener(new ActionListener() { // play
+			public void actionPerformed(ActionEvent actionEvent) {
+				JOptionPane.showMessageDialog(null,  "Game loads here", "Bomberman", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		help.addActionListener(new ActionListener() { // disps instructs; go to dispInstructs() to edit instructions
 			
 			public void actionPerformed(ActionEvent actionEvent) {
 				JOptionPane.showMessageDialog(null,  dispInstructs(), "Help", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		exit.addActionListener(new ActionListener() {
+		exit.addActionListener(new ActionListener() { // exits prog
 			public void actionPerformed(ActionEvent actionEvent) {
 				System.exit(0);
 			}
 		});
-		highScores.addActionListener(new ActionListener() { // 
+		highScores.addActionListener(new ActionListener() { // gets strBuffer from loadFile() and disps in message box
 			public void actionPerformed(ActionEvent actionEvent) {
 				JOptionPane.showMessageDialog(null, loadFile(), "High Scores", JOptionPane.INFORMATION_MESSAGE);
 			}
