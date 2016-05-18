@@ -44,8 +44,8 @@ public class GameDebug extends JPanel implements ActionListener {
 	}
 	
 	public void render() {
-		for (Location loc : grid.getOccupiedLocations()) {
-			grid.get(loc).render(this.getGraphics(), scaleX, scaleY);
+		for (Inhabitant i : grid.getAll()) {
+			i.render(this.getGraphics(), scaleX, scaleY);
 		}
 	}
 	
