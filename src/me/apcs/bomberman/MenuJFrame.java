@@ -9,7 +9,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -19,7 +18,6 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.*;
-import java.util.Scanner;
 
 public class MenuJFrame extends JFrame {
 	//declare fields
@@ -31,37 +29,17 @@ public class MenuJFrame extends JFrame {
 		//set up JFrame
 		setTitle("Bomberman");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 350, 280);
+		setBounds(100, 100, 335, 220);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//create JPanel object and initialize
-		JPanel panel = new JPanel();
-		panel.setBounds(17, 15, 310, 198);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-	// beginning of play button, moved to menu bar but in case y'all want to shift back old code is here
-		//create JButton object, initialize, and add ActionListener
-		//JButton playJButton = new JButton("Play");
-		//playJButton.addActionListener(new ActionListener() {
-		//	public void actionPerformed(ActionEvent arg0) {
-		//		//load game
-		//		JOptionPane.showMessageDialog(contentPane, "Game loads here.", "Bomberman", JOptionPane.INFORMATION_MESSAGE);
-		//	}
-		//});
-		//playJButton.setBounds(0, 155, 310, 43);
-		
-		//add playJButton to panel
-		//panel.add(playJButton);
-	// 	end of play button
-		
 		//create JLabel object and initialize
 		JLabel label = new JLabel("");
-		label.setBounds(0, 0, 310, 144);
-		panel.add(label);
+		label.setBounds(9, 12, 310, 144);
+		contentPane.add(label);
+		label.setBorder(null);
 		label.setIcon(new ImageIcon("intro.png"));
 		
 		// menu bar
