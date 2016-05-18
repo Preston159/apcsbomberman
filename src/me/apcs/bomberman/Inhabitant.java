@@ -13,8 +13,6 @@ import java.awt.Graphics;
 
 public class Inhabitant {
 	
-	public static final int RIGHT = 0, DOWN = 1, LEFT = 2, UP = 3;
-	
 	private final double stepDistance = 0.1;
 	
 	private Color color;
@@ -110,11 +108,10 @@ public class Inhabitant {
 	 */
 	public boolean canMove(Grid<Inhabitant> g, Location l) {
 		Location player = this.getLocation();
-		if(player.inSameSquare(l) == true)
-			return true;
-		if(g.get(l) instanceof Bomberman || g.get(l) instanceof Powerup)
-			return true;
-		return false;
+		for(Inhabitant i : g.getAll())
+			if(i.getLocation().inSameSquare(player) && !(i instanceof Bomberman || i instanceof Powerup))
+				return false;
+		return true;
 	}
 	
 	/**
@@ -140,13 +137,13 @@ public class Inhabitant {
 	 */
 	public boolean step(int direction) {
 		switch(direction) {
-		case UP:
+		case Location.UP:
 			return move(0, -(stepDistance * speed));
-		case DOWN:
+		case Location.DOWN:
 			return move(0, stepDistance * speed);
-		case LEFT:
+		case Location.LEFT:
 			return move(-(stepDistance * speed), 0);
-		case RIGHT:
+		case Location.RIGHT:
 			return move(stepDistance * speed, 0);
 		default:
 			throw new IllegalArgumentException("Invalid step direction");
