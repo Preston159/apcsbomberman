@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.*;
+import java.util.Scanner;
 
 public class MenuJFrame extends JFrame {
 	//declare fields
@@ -67,9 +69,11 @@ public class MenuJFrame extends JFrame {
 		JMenu mnGame = new JMenu("Game");
 		JMenuItem help = new JMenuItem("Help");
 		JMenuItem exit = new JMenuItem("Exit");
+		JMenuItem highScores = new JMenuItem("High Scores");
 		menuBar.add(mnGame);
 		mnGame.add(help);
 		mnGame.add(exit);
+		mnGame.add(highScores);
 		help.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -79,6 +83,11 @@ public class MenuJFrame extends JFrame {
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				System.exit(0);
+			}
+		});
+		highScores.addActionListener(new ActionListener() { // 
+			public void actionPerformed(ActionEvent actionEvent) {
+				JOptionPane.showMessageDialog(null, loadFile(), "High Scores", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 
@@ -104,5 +113,31 @@ public class MenuJFrame extends JFrame {
 		return "Why hello, welcome to the wonderful world of Bomberman, where you can drop bombs and blow up bricks and stuff."
 				+ "\nThere are powerups that I'll remember to put up later.  Instructions:  use keypad, press some button to drop bombs."
 				+ "  Go cubs";
+	}
+	// read scores from scores.txt, called in high scores button in menu bar above
+	public static StringBuffer loadFile()
+	{
+		String path = "scores.txt";
+		try
+		{
+			
+			File file = new File(path);
+			StringBuffer strBuffer = new StringBuffer((int)file.length());
+			BufferedReader input = new BufferedReader(new FileReader(file));
+			Scanner check = null;
+			String line = "";
+			while ((line = input.readLine()) != null)
+			{
+				strBuffer.append(line);
+				strBuffer.append("\n");
+			}
+			
+			return strBuffer;
+		}
+		catch (IOException io)
+		{
+			StringBuffer error = new StringBuffer();
+			return error.append("RUH ROH Can't find " + path);
+		}
 	}
 }
