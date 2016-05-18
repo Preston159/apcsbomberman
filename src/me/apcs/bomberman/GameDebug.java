@@ -16,7 +16,6 @@ public class GameDebug extends JPanel implements ActionListener {
 	public static final int HEIGHT = 500;
 	
 	private int time = 0;
-	private Grid<Inhabitant> grid;
 	private List<Bomberman> players;
 	private double scaleX, scaleY;
 	private Keyboard keys;
@@ -33,26 +32,24 @@ public class GameDebug extends JPanel implements ActionListener {
 		int gridSizeY = Integer.valueOf(Settings.p.getProperty("gridSizeY"));
 		scaleX = WIDTH / gridSizeX;
 		scaleY = HEIGHT / gridSizeY;
-		grid = new Grid<Inhabitant>(gridSizeX, gridSizeY);
+		Game.createGrid();
 		players = new ArrayList<Bomberman>();
 		keys = new Keyboard();
 		addKeyListener(keys);
 		
 		//add one Inhabitant
 		players.add(new Bomberman(Color.BLUE, new Location(0,0), 1, 1, 1));
-		grid.add(players.get(0));
+		Game.getGrid().add(players.get(0));
 	}
 	
 	public void render() {
-		for (Inhabitant i : grid.getAll()) {
+		for (Inhabitant i : Game.getGrid().getAll()) {
 			i.render(this.getGraphics(), scaleX, scaleY);
 		}
 	}
 	
 	public void update() {
-		if (keys.getKey(KeyEvent.VK_D)) {
-			players.get(0).move(0.1, 0.0);
-		}
+		players.get(0).move(0.01, 0.01);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -62,6 +59,7 @@ public class GameDebug extends JPanel implements ActionListener {
 	}
 
 	public static void main(String[] args) {
+		Game.createGrid();
 		JFrame w = new JFrame("DEBUG GAME");
 		w.setSize(WIDTH, HEIGHT);
 		Container c = w.getContentPane();
