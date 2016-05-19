@@ -30,7 +30,7 @@ public class Inhabitant {
 		color = c;
 		loc = l;
 		speed = 0d;
-		size = 0.45;
+		size = 1.0;
 	}
 	
 	/**
@@ -71,6 +71,13 @@ public class Inhabitant {
 	 */
 	public void setLocation(Location l) {
 		loc = l;
+	}
+	
+	/**
+	 * @return <code>speed</code>
+	 */
+	public double getSpeed() {
+		return speed;
 	}
 	
 	/**

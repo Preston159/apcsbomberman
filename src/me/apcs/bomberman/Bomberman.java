@@ -23,7 +23,7 @@ public class Bomberman extends Inhabitant{
 	 * @param bc
 	 * @param bs
 	 */
-	public Bomberman(Color c, Location l, int s, int bc, int bs)
+	public Bomberman(Color c, Location l, double s, int bc, int bs)
 	{
 		super(c, l);
 		super.setSpeed(s);
