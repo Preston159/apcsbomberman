@@ -2,14 +2,15 @@ package me.apcs.bomberman;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import java.awt.event.KeyEvent;
 
 public class GameDebug extends JPanel implements ActionListener {
 	public static final int WIDTH = 500;
@@ -23,8 +24,12 @@ public class GameDebug extends JPanel implements ActionListener {
 	public GameDebug() {
 		//initialize timer
 		time = 0;
-		Timer clock = new Timer(30, this);
+		Timer clock = new Timer(15, this);
 		clock.start();
+		
+		//set focus
+		setFocusable(true);
+		requestFocusInWindow();
 		
 		//initialize settings
 		Settings.init();
@@ -34,38 +39,55 @@ public class GameDebug extends JPanel implements ActionListener {
 		scaleY = HEIGHT / gridSizeY;
 		Game.createGrid();
 		players = new ArrayList<Bomberman>();
-		keys = new Keyboard();
-		addKeyListener(keys);
 		
 		//add one Inhabitant
 		players.add(new Bomberman(Color.BLUE, new Location(0,0), 1, 1, 1));
 		Game.getGrid().add(players.get(0));
+		
+		//set up keyboard actions
+		keys = new Keyboard();
+		addKeyListener(keys);
 	}
 	
-	public void render() {
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		for (Inhabitant i : Game.getGrid().getAll()) {
-			i.render(this.getGraphics(), scaleX, scaleY);
+			i.render(g, scaleX, scaleY);
 		}
 	}
 	
 	public void update() {
-		players.get(0).move(0.01, 0.01);
+		if (keys.getKey(KeyEvent.VK_UP)) {
+			players.get(0).move(0.0, -0.1);
+		}
+		if (keys.getKey(KeyEvent.VK_DOWN)) {
+			players.get(0).move(0.0, 0.1);
+		}
+		if (keys.getKey(KeyEvent.VK_LEFT)) {
+			players.get(0).move(-0.1, 0.0);
+		}
+		if (keys.getKey(KeyEvent.VK_RIGHT)) {
+			players.get(0).move(0.1, 0.0);
+		}
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		time++;
 		update();
-		render();
+		repaint();
 	}
 
 	public static void main(String[] args) {
 		Game.createGrid();
 		JFrame w = new JFrame("DEBUG GAME");
 		w.setSize(WIDTH, HEIGHT);
+		
 		Container c = w.getContentPane();
 		c.add(new GameDebug());
+		
 		w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    w.setResizable(false);
 	    w.setVisible(true);
 	}
 }
+
