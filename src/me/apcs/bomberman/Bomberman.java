@@ -103,16 +103,16 @@ public class Bomberman extends Inhabitant {
 	public void update()
 	{
 		if (keys.getKey(KeyEvent.VK_UP)) {
-			this.step(Location.UP);
+			this.move(0, this.getSpeed());
 		}
 		if (keys.getKey(KeyEvent.VK_DOWN)) {
-			this.step(Location.DOWN);
+			this.move(0,- this.getSpeed());
 		}
 		if (keys.getKey(KeyEvent.VK_LEFT)) {
-			this.step(Location.LEFT);
+			this.move(-this.getSpeed(), 0);
 		}
 		if (keys.getKey(KeyEvent.VK_RIGHT)) {
-			this.step(Location.RIGHT);
+			this.move(this.getSpeed(), 0);
 		}
 	}
 	
