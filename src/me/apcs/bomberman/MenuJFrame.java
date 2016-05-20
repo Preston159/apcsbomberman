@@ -2,6 +2,7 @@
  * MenuJFrame.java
  * @author Rayyan Karim
  * @author Logan Kulinski
+ * @author Ferris Esposito
  */
 
 package me.apcs.bomberman;
@@ -50,13 +51,14 @@ public class MenuJFrame extends JFrame {
 		// menu bar
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+		//creates new menu items
 		JMenu mnGame = new JMenu("Game");
 		JMenuItem play = new JMenuItem("Play");
 		JMenuItem help = new JMenuItem("Help");
 		JMenuItem controls = new JMenuItem("Controls");
 		JMenuItem exit = new JMenuItem("Exit");
 		JMenuItem highScores = new JMenuItem("High Scores");
+		//adds items to menu
 		menuBar.add(mnGame);
 		mnGame.add(play);
 		mnGame.add(help);
@@ -77,7 +79,7 @@ public class MenuJFrame extends JFrame {
 				JOptionPane.showMessageDialog(null,  dispInstructs(), "Help", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		controls.addActionListener(new ActionListener() {
+		controls.addActionListener(new ActionListener() { // explains controls
 			public void actionPerformed(ActionEvent actionEvent) {
 				JOptionPane.showMessageDialog(null,  "*insert controls here*", "Controls", JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -121,6 +123,7 @@ public class MenuJFrame extends JFrame {
 	public static StringBuffer loadFile()
 	{
 		String path = "scores.txt";
+		//looks for file scores.txt...if not found displays that it cannot be found
 		try
 		{
 			
@@ -143,7 +146,8 @@ public class MenuJFrame extends JFrame {
 		}
 	}
 	private void doPlay() {
-	    try {
+	   //looks for music.wav file...if not found displays that it cannot be found
+		try {
 	        stopPlay();
 	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File ("music.wav").getAbsoluteFile()); // gotta convert to wave
 	        clip = AudioSystem.getClip();
