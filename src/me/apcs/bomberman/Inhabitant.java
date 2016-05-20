@@ -10,10 +10,13 @@ package me.apcs.bomberman;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.UUID;
 
 public class Inhabitant {
 	
 	private final double stepDistance = 1d;
+	
+	private UUID id;
 	
 	private Color color;
 	private Location loc;
@@ -30,6 +33,7 @@ public class Inhabitant {
 		loc = l;
 		speed = 0d;
 		size = 1.0;
+		id = UUID.randomUUID();
 	}
 	
 	/**
@@ -38,6 +42,7 @@ public class Inhabitant {
 	public Inhabitant() {
 		this(new Color(255, 255, 255), new Location(0, 0));
 		speed = 0d;
+		id = UUID.randomUUID();
 	}
 	
 	/**
@@ -185,5 +190,9 @@ public class Inhabitant {
 	 */
 	public void update() {
 		
+	}
+	
+	public UUID getId() {
+		return id;
 	}
 }
