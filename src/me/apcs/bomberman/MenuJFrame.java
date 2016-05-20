@@ -14,6 +14,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,6 +26,7 @@ public class MenuJFrame extends JFrame {
 	//declare fields
 	private static final long serialVersionUID = -5402450417506587103L;
 	private JPanel contentPane;
+	private Clip clip;
 	
 	public MenuJFrame() {
 		setResizable(false);
@@ -56,6 +60,7 @@ public class MenuJFrame extends JFrame {
 		mnGame.add(help);
 		mnGame.add(exit);
 		mnGame.add(highScores);
+		doPlay();
 		play.addActionListener(new ActionListener() { // play
 			public void actionPerformed(ActionEvent actionEvent) {
 				JOptionPane.showMessageDialog(null,  "Game loads here", "Bomberman", JOptionPane.INFORMATION_MESSAGE);
@@ -69,6 +74,7 @@ public class MenuJFrame extends JFrame {
 		});
 		exit.addActionListener(new ActionListener() { // exits prog
 			public void actionPerformed(ActionEvent actionEvent) {
+				stopPlay();
 				System.exit(0);
 			}
 		});
@@ -77,10 +83,6 @@ public class MenuJFrame extends JFrame {
 				JOptionPane.showMessageDialog(null, loadFile(), "High Scores", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-
-		
-		JMenuItem mntmWhyHello = new JMenuItem("");
-		menuBar.add(mntmWhyHello);
 	} //MenuJFrame
 	
 	public static void main(String[] args) {
@@ -125,5 +127,25 @@ public class MenuJFrame extends JFrame {
 			StringBuffer error = new StringBuffer();
 			return error.append("RUH ROH Can't find " + path);
 		}
+	}
+	private void doPlay() {
+	    try {
+	        stopPlay();
+	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File ("music.wav").getAbsoluteFile()); // gotta convert to wave
+	        clip = AudioSystem.getClip();
+	        clip.open(inputStream);
+	        clip.start();
+	    } catch (Exception e) {
+	        stopPlay();
+	        JOptionPane.showMessageDialog(null, "Cannot locate music.wav", "UF", JOptionPane.INFORMATION_MESSAGE);
+	    }
+	}
+
+	private void stopPlay() {
+	    if (clip != null) {
+	        clip.stop();
+	        clip.close();
+	        clip = null;
+	    }
 	}
 }
