@@ -11,6 +11,11 @@ public class Location {
 		x = xx + 0.5;
 		y = yy + 0.5;
 	}
+	
+	public Location(double xx, double yy) {
+		x = xx + 0.5;
+		y = yy + 0.5;
+	}
 
     public int getIntX() {
         return (int)x;
@@ -50,23 +55,41 @@ public class Location {
 	 * @param l is the location the object is moving to(second)
 	 * @return
 	 */
-	public int getDirection(Location l)	
-	{
-		if (this.getX()!=l.getX())
-		{
-			if (l.getX() > this.getX())
-			{
+	public int getDirection(Location l)	{
+		double dx, dy;
+		dx = l.getX() - this.getX();
+		System.out.println("l:" + l.getX() + "," + this.getX());
+		dy = l.getY() - this.getY();
+		System.out.println("dy:" + dy);
+		if(Math.abs(dx) >= Math.abs(dy)) {
+			if(dx >= 0)
 				return RIGHT;
-			}
 			return LEFT;
 		}
-		else
-		{
-			if (l.getY() > this.getY())
-			{
-				return DOWN;
-			}
-			return UP;
+		if(dy >= 0)
+			return DOWN;
+		return UP;
+	}
+	
+	public void addDirection(int direction, double amount) {
+		switch(direction) {
+		case UP:
+			this.add(-amount, 0);
+			break;
+		case DOWN:
+			this.add(amount, 0);
+			break;
+		case RIGHT:
+			this.add(0, amount);
+			break;
+		case LEFT:
+			this.add(0, -amount);
+			break;
+		default: break;
 		}
+	}
+	
+	public Location clone() {
+		return new Location(x - 0.5, y - 0.5);
 	}
 }
