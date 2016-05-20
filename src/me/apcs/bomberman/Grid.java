@@ -159,24 +159,6 @@ public class Grid<T extends Inhabitant> {
 	} //set
 	
 	/**
-	 * Removes all objects at a specified <code>Location</code> in the <code>Grid</code>
-	 * 
-	 * @param l contains the <code>Location</code> of the objects needing to be removed
-	 * @throws <code>IndexOutOfBoundsException</code> - if <code>l</code>'s coordinates are not in range
-	 */
-	public void remove(Location l) throws IndexOutOfBoundsException {
-		//determine if l is a valid location
-		if (isValid(l)) {
-			//traverse tList and remove elements with a matching Location
-			this.tList.removeIf(t -> t.getLocation().inSameSquare(l));
-			
-			return;
-		} //end if
-		
-		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
-	} //remove
-	
-	/**
 	 * Removes all objects of a specified <code>Inhabitant</code> type in the <code>Grid</code>
 	 * 
 	 * @param i contains the <code>Inhabitant</code> type of the objects needing to be removed
@@ -192,8 +174,26 @@ public class Grid<T extends Inhabitant> {
 	 * @param i the <code>Inhabitant</code> to be removed
 	 */
 	public void remove(Inhabitant i) {
-		//remove the Inhabitant from the Grid
-		tList.remove(i);
+		//remove Inhabitant from the Grid
+		this.tList.remove(i);
+	} //remove
+	
+	/**
+	 * Removes all objects at a specified <code>Location</code> in the <code>Grid</code>
+	 * 
+	 * @param l contains the <code>Location</code> of the objects needing to be removed
+	 * @throws <code>IndexOutOfBoundsException</code> - if <code>l</code>'s coordinates are not in range
+	 */
+	public void remove(Location l) throws IndexOutOfBoundsException {
+		//determine if l is a valid location
+		if (isValid(l)) {
+			//traverse tList and remove elements with a matching Location
+			this.tList.removeIf(t -> t.getLocation().inSameSquare(l));
+			
+			return;
+		} //end if
+		
+		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //remove
 	
 	/**
