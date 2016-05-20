@@ -181,9 +181,19 @@ public class Grid<T extends Inhabitant> {
 	 * 
 	 * @param i contains the <code>Inhabitant</code> type of the objects needing to be removed
 	 */
-	public void remove(Inhabitant i) {
+	public void removeAll(Inhabitant i) {
 		//traverse tList and remove elements with a matching Inhabitant type
 		this.tList.removeIf(t -> t.getClass().equals(i.getClass()));
+	} //removeAll
+	
+	/**
+	 * Removes the specified <code>Inhabitant</code> from the </code>Grid</code>
+	 * 
+	 * @param i the <code>Inhabitant</code> to be removed
+	 */
+	public void remove(Inhabitant i) {
+		//remove the Inhabitant from the Grid
+		tList.remove(i);
 	} //remove
 	
 	/**
