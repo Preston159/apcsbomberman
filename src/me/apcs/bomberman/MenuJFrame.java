@@ -58,8 +58,8 @@ public class MenuJFrame extends JFrame {
 		menuBar.add(mnGame);
 		mnGame.add(play);
 		mnGame.add(help);
-		mnGame.add(exit);
 		mnGame.add(highScores);
+		mnGame.add(exit);
 		doPlay();
 		play.addActionListener(new ActionListener() { // play
 			public void actionPerformed(ActionEvent actionEvent) {
