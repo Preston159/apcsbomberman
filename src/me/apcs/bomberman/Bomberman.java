@@ -8,13 +8,16 @@
 package me.apcs.bomberman;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
-public class Bomberman extends Inhabitant{
+public class Bomberman extends Inhabitant {
 
 	private int bombCapacity;
 	private boolean kickBomb;
 	private int bombSize;
-	
+	private Keyboard keys;
 	/**
 	 * Initializes the bomberman
 	 * @param c
@@ -30,6 +33,7 @@ public class Bomberman extends Inhabitant{
 		bombCapacity = bc;
 		kickBomb = false;
 		bombSize = bs;
+		keys = new Keyboard();
 	}
 	
 	/**
@@ -91,6 +95,22 @@ public class Bomberman extends Inhabitant{
 		p.setBomber(this);
 		p.powerUp();
 		p.destroy();
+	}
+	
+	public void update()
+	{
+		if (keys.getKey(KeyEvent.VK_UP)) {
+			this.move(0, this.getSpeed());
+		}
+		if (keys.getKey(KeyEvent.VK_DOWN)) {
+			this.move(0,- this.getSpeed());
+		}
+		if (keys.getKey(KeyEvent.VK_LEFT)) {
+			this.move(-this.getSpeed(), 0);
+		}
+		if (keys.getKey(KeyEvent.VK_RIGHT)) {
+			this.move(this.getSpeed(), 0);
+		}
 	}
 	
 	
