@@ -33,9 +33,12 @@ public class Bomberman extends Inhabitant {
 		bombCapacity = bc;
 		kickBomb = false;
 		bombSize = bs;
-		keys = new Keyboard();
 	}
 	
+	public void setKey(Keyboard k)
+	{
+		keys = k;
+	}
 	/**
 	 * Increases the bombCapacity by x amount
 	 * @param x

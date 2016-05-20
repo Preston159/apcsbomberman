@@ -1,14 +1,30 @@
+/**
+ * @author Joey Munsie
+ * @author Zach Seliger
+ * @author Marcellus Hunt
+ * @author Haroon Mohiuddin
+ */
+
 package me.apcs.bomberman;
 
 public class Powerup extends Inhabitant {
 	public enum Type {SPEED, CAPACITY, CAN_KICK, BOMB_SIZE};
 	private Bomberman bomber;
 	private Type type;
-	
+
+	/**
+	 * Initializes powerup location
+	 * @param loc - powerup location
+	 */
 	public Powerup(Location loc) {
 		super(null, loc);
 	}
 	
+	/**
+	 * Initializes powerup
+	 * @param loc - location of where the powerup will spawn
+	 * @param t - the type of powerup that will spawn
+	 */
 	public Powerup(Location loc, Type t) {
 		super(null, loc);
 		type=t;
@@ -28,9 +44,16 @@ public class Powerup extends Inhabitant {
 			bomber.changeBombSize(1);
 	}
 	
+	/**
+	 * @param b
+	 */
 	public void setBomber(Bomberman b) {
 		bomber = b;
 	}
+	
+	/**
+	 * @param t
+	 */
 	public void setPowerUp(Type t) {
 		type = t;
 	}
