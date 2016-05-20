@@ -1,5 +1,6 @@
 /**
  * MenuJFrame.java
+ * @author Rayyan Karim
  * @author Logan Kulinski
  */
 
