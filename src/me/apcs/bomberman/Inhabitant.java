@@ -13,7 +13,7 @@ import java.awt.Graphics;
 
 public class Inhabitant {
 	
-	private final double stepDistance = 0.1;
+	private final double stepDistance = 1d;
 	
 	private Color color;
 	private Location loc;
@@ -93,11 +93,11 @@ public class Inhabitant {
 	 * @return	True if successfully moved, false if not
 	 */
 	public boolean move(double dx, double dy) {
-		Location l = getLocation();
+		Location l = getLocation().clone();
 		l.add(dx, dy);
 		Grid<Inhabitant> g = Game.getGrid();
 		if(canMove(g, l)) {
-			setLocation(l);
+			this.setLocation(l);
 			return true;
 		}
 		return false;
@@ -120,10 +120,13 @@ public class Inhabitant {
 	 * @return	True if the given <code>Location</code> is on the given <code>Grid</code> and does not contain a <code>Bomb</code> or <code>Brick</code>
 	 */
 	public boolean canMove(Grid<Inhabitant> g, Location l) {
-		Location player = this.getLocation();
-		for(Inhabitant i : g.getAll())
-			if(i.getLocation().inSameSquare(player) && !(i instanceof Bomberman || i instanceof Powerup))
-				return false;
+		if(this.getLocation().inSameSquare(l))
+			return true;
+		int direction = this.getLocation().getDirection(l);
+		Location test = this.getLocation().clone();
+		test.addDirection(direction, 0.1);
+		if(test.inSameSquare(l))
+			return false;
 		return true;
 	}
 	
@@ -162,8 +165,8 @@ public class Inhabitant {
 			throw new IllegalArgumentException("Invalid step direction");
 		}
 	}
-	public void render(Graphics g, double scaleX, double scaleY)
-	{
+	
+	public void render(Graphics g, double scaleX, double scaleY) {
 		g.setColor(getColor());
 		g.fillRect((int)(getLocation().getX() * scaleX), (int)(getLocation().getY() * scaleY), (int)(scaleX * size), (int)(scaleY * size));
 	}
