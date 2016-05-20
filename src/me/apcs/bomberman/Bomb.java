@@ -1,10 +1,13 @@
 package me.apcs.bomberman;
 
 import java.awt.Color;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Bomb extends Inhabitant
 {
 	private int bombLength;
+	Timer timer;
 	
 	/**
 	 * Initializes the bomb
@@ -16,6 +19,7 @@ public class Bomb extends Inhabitant
 	{
 		super(c, l);
 		bombLength = b;
+		timer = new Timer();
 	}
 	
 	/**
@@ -213,5 +217,24 @@ public class Bomb extends Inhabitant
 		}
 		//destroy the bomb
 		this.destroy();
+	}
+	public class RemindTask extends TimerTask
+	{
+		private Bomb bomb;
+		public RemindTask(Bomb b)
+		{
+		bomb = b;	
+		}
+		@Override
+		public void run() 
+		{
+			bomb.explode();			
+		}
+		
+	}
+	
+	public void update()
+	{
+		timer.schedule(new RemindTask(this), 4000);
 	}
 }
