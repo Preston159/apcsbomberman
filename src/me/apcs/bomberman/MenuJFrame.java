@@ -54,11 +54,13 @@ public class MenuJFrame extends JFrame {
 		JMenu mnGame = new JMenu("Game");
 		JMenuItem play = new JMenuItem("Play");
 		JMenuItem help = new JMenuItem("Help");
+		JMenuItem controls = new JMenuItem("Controls");
 		JMenuItem exit = new JMenuItem("Exit");
 		JMenuItem highScores = new JMenuItem("High Scores");
 		menuBar.add(mnGame);
 		mnGame.add(play);
 		mnGame.add(help);
+		mnGame.add(controls);
 		mnGame.add(highScores);
 		mnGame.add(exit);
 		doPlay();
@@ -71,6 +73,11 @@ public class MenuJFrame extends JFrame {
 			
 			public void actionPerformed(ActionEvent actionEvent) {
 				JOptionPane.showMessageDialog(null,  dispInstructs(), "Help", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		controls.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				JOptionPane.showMessageDialog(null,  "*insert controls here*", "Controls", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		exit.addActionListener(new ActionListener() { // exits prog
