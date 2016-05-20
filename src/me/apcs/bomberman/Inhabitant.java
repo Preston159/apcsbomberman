@@ -20,7 +20,6 @@ public class Inhabitant {
 	private double speed;
 	private double size;
 	
-	
 	/**
 	 * Create <code>Inhabitant</code>
 	 * @param c	<code>Inhabitant</code>'s <code>Color</code>
@@ -78,6 +77,13 @@ public class Inhabitant {
 	 */
 	public double getSpeed() {
 		return speed;
+	}
+	
+	/**
+	 * @return <code>size</code>
+	 */
+	public double getSize() {
+		return size;
 	}
 	
 	/**
@@ -168,5 +174,13 @@ public class Inhabitant {
 	 */
 	public void setSize(double s) {
 		size = s;
+	}
+	
+	/**
+	 * Updates itself, the default method
+	 * Called by the update function of the game
+	 */
+	public void update() {
+		
 	}
 }

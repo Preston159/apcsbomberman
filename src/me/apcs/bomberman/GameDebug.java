@@ -16,7 +16,7 @@ public class GameDebug extends JPanel implements ActionListener {
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 500;
 	
-	private int time = 0;
+	private int time;
 	private List<Bomberman> players;
 	private double scaleX, scaleY;
 	private Keyboard keys;
@@ -45,7 +45,7 @@ public class GameDebug extends JPanel implements ActionListener {
 		Game.getGrid().add(players.get(0));
 		
 		//add a Brick
-		Game.getGrid().add(new Brick(Color.GRAY, new Location(1, 1), true));
+		Game.getGrid().add(new Brick(Color.GRAY, new Location(1, 1), true, (ArrayList<Bomberman>) players));
 		
 		//set up keyboard actions
 		keys = new Keyboard();
@@ -61,7 +61,7 @@ public class GameDebug extends JPanel implements ActionListener {
 	
 	public void update() {
 		for (Inhabitant i : Game.getGrid().getAll()) {
-			
+			i.update();
 		}
 		
 		if (keys.getKey(KeyEvent.VK_UP)) {
