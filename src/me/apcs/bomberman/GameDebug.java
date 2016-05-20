@@ -47,9 +47,13 @@ public class GameDebug extends JPanel implements ActionListener {
 		//add a Brick
 		Game.getGrid().add(new Brick(Color.GRAY, new Location(1, 1), true, (ArrayList<Bomberman>) players));
 		
+		//add a Bomb
+		Game.getGrid().add(new Bomb(new Location(4,4), 4));
+		
 		//set up keyboard actions
 		keys = new Keyboard();
 		addKeyListener(keys);
+		players.get(0).setKey(keys);
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -62,19 +66,6 @@ public class GameDebug extends JPanel implements ActionListener {
 	public void update() {
 		for (Inhabitant i : Game.getGrid().getAll()) {
 			i.update();
-		}
-		
-		if (keys.getKey(KeyEvent.VK_UP)) {
-			players.get(0).move(0.0, -players.get(0).getSpeed());
-		}
-		if (keys.getKey(KeyEvent.VK_DOWN)) {
-			players.get(0).move(0.0, players.get(0).getSpeed());
-		}
-		if (keys.getKey(KeyEvent.VK_LEFT)) {
-			players.get(0).move(-players.get(0).getSpeed(), 0.0);
-		}
-		if (keys.getKey(KeyEvent.VK_RIGHT)) {
-			players.get(0).move(players.get(0).getSpeed(), 0.0);
 		}
 	}
 	

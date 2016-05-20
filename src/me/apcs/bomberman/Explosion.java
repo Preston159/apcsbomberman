@@ -10,8 +10,8 @@ public class Explosion extends Inhabitant {
 	
 	private int state = 0;
 	
-	public Explosion(Color c, Location l) {
-		super(c, l);
+	public Explosion(Location l) {
+		super(Color.RED, l);
 	}
 	
 	/**

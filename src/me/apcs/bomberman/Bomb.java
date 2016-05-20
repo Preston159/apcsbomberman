@@ -15,9 +15,10 @@ public class Bomb extends Inhabitant
 	 * @param l
 	 * @param b
 	 */
-	public Bomb (Color c, Location l, int b)
+	public Bomb (Location l, int b)
 	{
-		super(c, l);
+		super(Color.BLACK, l);
+		setSize(0.5);
 		bombLength = b;
 		timer = new Timer();
 	}
@@ -78,14 +79,14 @@ public class Bomb extends Inhabitant
 						if(b.isBreakable())
 						{
 							Game.getGrid().remove(l);
-							Game.getGrid().add(new Explosion(super.getColor(), l));
+							Game.getGrid().add(new Explosion(l));
 						}
 						//if it isn't a brick, set space to explosion
 					}
 					else
 					{
 						Game.getGrid().remove(l);
-						Game.getGrid().add(new Explosion(super.getColor(), l));
+						Game.getGrid().add(new Explosion(l));
 					}
 				}
 				nn = 0;
@@ -119,14 +120,14 @@ public class Bomb extends Inhabitant
 						if(b.isBreakable())
 						{
 							Game.getGrid().remove(l);
-							Game.getGrid().add(new Explosion(super.getColor(), l));
+							Game.getGrid().add(new Explosion(l));
 						}
 						//if it isn't a brick, set space to explosion
 					}
 					else
 					{
 						Game.getGrid().remove(l);
-						Game.getGrid().add(new Explosion(super.getColor(), l));
+						Game.getGrid().add(new Explosion(l));
 					}
 				}
 				nn = 0;
@@ -160,14 +161,14 @@ public class Bomb extends Inhabitant
 						if(b.isBreakable())
 						{
 							Game.getGrid().remove(l);
-							Game.getGrid().add(new Explosion(super.getColor(), l));
+							Game.getGrid().add(new Explosion(l));
 						}
 						//if it isn't a brick, set space to explosion
 					}
 					else
 					{
 						Game.getGrid().remove(l);
-						Game.getGrid().add(new Explosion(super.getColor(), l));
+						Game.getGrid().add(new Explosion(l));
 					}
 				}
 				nn = 0;
@@ -201,14 +202,14 @@ public class Bomb extends Inhabitant
 						if(b.isBreakable())
 						{
 							Game.getGrid().remove(l);
-							Game.getGrid().add(new Explosion(super.getColor(), l));
+							Game.getGrid().add(new Explosion(l));
 						}
 						//if it isn't a brick, set space to explosion
 					}
 					else
 					{
 						Game.getGrid().remove(l);
-						Game.getGrid().add(new Explosion(super.getColor(), l));
+						Game.getGrid().add(new Explosion(l));
 					}
 				}
 				nn = 0;
