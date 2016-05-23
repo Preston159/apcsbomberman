@@ -55,8 +55,9 @@ public class Bomb extends Inhabitant
 			current++;
 		}
 		current = 1;
+		l = this.getLocation().clone();
 		while(down && current <= bombLength) {
-			l.add(-1d, 0d);
+			l.add(1d, 0d);
 			if(!Game.getGrid().isValid(l))
 				break;
 			for(Inhabitant inhabitant : Game.getGrid().get(l))
@@ -72,8 +73,9 @@ public class Bomb extends Inhabitant
 			current++;
 		}
 		current = 1;
+		l = this.getLocation().clone();
 		while(left && current <= bombLength) {
-			l.add(-1d, 0d);
+			l.add(0d, -1d);
 			if(!Game.getGrid().isValid(l))
 				break;
 			for(Inhabitant inhabitant : Game.getGrid().get(l))
@@ -89,8 +91,9 @@ public class Bomb extends Inhabitant
 			current++;
 		}
 		current = 1;
+		l = this.getLocation().clone();
 		while(right && current <= bombLength) {
-			l.add(-1d, 0d);
+			l.add(0d, 1d);
 			if(!Game.getGrid().isValid(l))
 				break;
 			for(Inhabitant inhabitant : Game.getGrid().get(l))
