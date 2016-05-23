@@ -7,12 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GameDebug extends JPanel implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3892977334156950067L;
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 500;
 	
@@ -42,13 +46,13 @@ public class GameDebug extends JPanel implements ActionListener {
 		
 		//add one Inhabitant
 		players.add(new Bomberman(Color.BLUE, new Location(0,0), 0.1, 1, 1));
-		Game.getGrid().add(players.get(0));
+		Game.queueAdd(players.get(0));
 		
 		//add a Brick
-		Game.getGrid().add(new Brick(Color.GRAY, new Location(1, 1), true, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(1, 1), true, (ArrayList<Bomberman>) players));
 		
 		//add a Bomb
-		Game.getGrid().add(new Bomb(new Location(4,4), 4));
+		Game.queueAdd(new Bomb(new Location(4,4), 4));
 		
 		//set up keyboard actions
 		keys = new Keyboard();
@@ -64,6 +68,12 @@ public class GameDebug extends JPanel implements ActionListener {
 	}
 	
 	public void update() {
+		for(Inhabitant i : Game.toDestroy)
+			Game.getGrid().remove(i);
+		Game.toDestroy.clear();
+		for(Inhabitant i : Game.toAdd)
+			Game.getGrid().add(i);
+		Game.toAdd.clear();
 		for (Inhabitant i : Game.getGrid().getAll()) {
 			i.update();
 		}

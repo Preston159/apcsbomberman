@@ -139,7 +139,7 @@ public class Inhabitant {
 	 * Removes the <code>Inhabitant</code> from the <code>Grid</code>
 	 */
 	public void destroy() {
-		Game.getGrid().remove(this);
+		Game.toDestroy.add(this);
 	}
 	
 	public void setSpeed(double s) {

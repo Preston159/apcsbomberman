@@ -9,8 +9,11 @@ public class Game {
 	
 	private static int tickLength;
 	
-	private static Grid<Inhabitant> grid;
+	private static volatile Grid<Inhabitant> grid;
 	private static List<Bomberman> players;
+	
+	public static volatile ArrayList<Inhabitant> toDestroy = new ArrayList<Inhabitant>();
+	public static volatile ArrayList<Inhabitant> toAdd = new ArrayList<Inhabitant>();
 	
 	public static void main(String[] args) {
 		Settings.init();
@@ -49,6 +52,12 @@ public class Game {
 				new TimerTask() {
 					@Override
 					public void run() {
+						for(Inhabitant i : toDestroy)
+							Game.getGrid().remove(i);
+						toDestroy.clear();
+						for(Inhabitant i : toAdd)
+							Game.getGrid().add(i);
+						toAdd.clear();
 						for(Inhabitant i : grid.getAll()) {		
 							if(i == null)
 								continue;
@@ -61,6 +70,20 @@ public class Game {
 					}
 				}, tickLength
 		);
+	}
+	
+	public static void queueDestroy(Inhabitant i) {
+		for(Inhabitant inhabitant : toDestroy)
+			if(i.getId().equals(inhabitant.getId()))
+				return;
+		toDestroy.add(i);
+	}
+	
+	public static void queueAdd(Inhabitant i) {
+		for(Inhabitant inhabitant : toAdd)
+			if(i.getId().equals(inhabitant.getId()))
+				return;
+		toAdd.add(i);
 	}
 	
 	/**

@@ -127,7 +127,9 @@ public class Grid<T extends Inhabitant> {
 			ArrayList<T> tempList = new ArrayList<>();
 			
 			//traverse tList, filter out elements by Location, and add remaining elements to tempList
-			this.tList.stream().filter(t -> t.getLocation().inSameSquare(l)).forEach(t -> tempList.add(t));
+			for(T i : this.tList)
+				if(i.getLocation().inSameSquare(l))
+					tempList.add(i);
 			
 			return tempList;
 		} //end if

@@ -34,191 +34,79 @@ public class Bomb extends Inhabitant
 	/**
 	 * Creates an explosion in each direction that is equal to bombLength
 	 */
-	public void explode()
-	{
-		//sets l to bomb location
-		Location l = this.getLocation();
-		
-		//declare the boolean variables 
-		boolean right = true;
-		boolean left = true;
-		boolean up = true;
-		boolean down = true;
-		boolean c = false;
-		int nn = 0;
-		
-		
-		//initiate for loop, while x <= Bomb Size
-		for(int x = 0; x <= this.getBombLength(); x++)
-		{
-			
-			
-			//if you haven't hit a wall, right is true
-			if (right == true)
-			{	
-				//sets l x right of the location of the bomb
-				l = new Location(this.getLocation().getIntX() + x, this.getLocation().getIntY());
-				//if l is a valid location on the grid
-				if (Game.getGrid().isValid(l))
-				{	
-					//if the location l is a brick, set right to false
-					for (int n = 0; n < Game.getGrid().get(l).size(); n++)
-					{
-						if(Game.getGrid().get(l).get(n) instanceof Brick)
-						{
-							c = true;
-							nn = n;
-						}
-					}
-					
-					if (c == true)
-					{
-						right = false;
-						Brick b = (Brick)Game.getGrid().get(l).get(nn);
-						//	if the brick is breakable, set the location of the brick to an explosion
-						if(b.isBreakable())
-						{
-							Game.getGrid().remove(l);
-							Game.getGrid().add(new Explosion(l));
-						}
-						//if it isn't a brick, set space to explosion
-					}
-					else
-					{
-						Game.getGrid().remove(l);
-						Game.getGrid().add(new Explosion(l));
-					}
+	public void explode() {
+		boolean up = true, down = true, left = true, right = true;
+		int current = 1;
+		Location l = this.getLocation().clone();
+		while(up && current <= bombLength) {
+			l.add(-1d, 0d);
+			if(!Game.getGrid().isValid(l))
+				break;
+			for(Inhabitant inhabitant : Game.getGrid().get(l))
+				if(inhabitant instanceof Brick) {
+					Brick b = (Brick) inhabitant;
+					if(!b.isBreakable())
+						break;
+					b.destroy();
+					up = false;
 				}
-				nn = 0;
-				c = false;
-			}
-			
-			//if you haven't hit a wall, left is true
-			if (left == true)
-			{	
-				
-				//sets l x right of the location of the bomb
-				l = new Location(this.getLocation().getIntX() - x, this.getLocation().getIntY());
-				//if l is a valid location on the grid
-				if (Game.getGrid().isValid(l))
-				{	
-					//if the location l is a brick, set right to false
-					for (int n = 0; n < Game.getGrid().get(l).size(); n++)
-					{
-						if(Game.getGrid().get(l).get(n) instanceof Brick)
-						{
-							c = true;
-							nn = n;
-						}
-					}
-					
-					if (c == true)
-					{
-						right = false;
-						Brick b = (Brick)Game.getGrid().get(l).get(nn);
-						//	if the brick is breakable, set the location of the brick to an explosion
-						if(b.isBreakable())
-						{
-							Game.getGrid().remove(l);
-							Game.getGrid().add(new Explosion(l));
-						}
-						//if it isn't a brick, set space to explosion
-					}
-					else
-					{
-						Game.getGrid().remove(l);
-						Game.getGrid().add(new Explosion(l));
-					}
-				}
-				nn = 0;
-				c = false;
-			}
-			
-			//if you haven't hit a wall yet, up is true
-			if (up == true)
-			{	
-				
-				//sets l x right of the location of the bomb
-				l = new Location(this.getLocation().getIntX(), this.getLocation().getIntY() + x);
-				//if l is a valid location on the grid
-				if (Game.getGrid().isValid(l))
-				{	
-					//if the location l is a brick, set right to false
-					for (int n = 0; n < Game.getGrid().get(l).size(); n++)
-					{
-						if(Game.getGrid().get(l).get(n) instanceof Brick)
-						{
-							c = true;
-							nn = n;
-						}
-					}
-					
-					if (c == true)
-					{
-						right = false;
-						Brick b = (Brick)Game.getGrid().get(l).get(nn);
-						//	if the brick is breakable, set the location of the brick to an explosion
-						if(b.isBreakable())
-						{
-							Game.getGrid().remove(l);
-							Game.getGrid().add(new Explosion(l));
-						}
-						//if it isn't a brick, set space to explosion
-					}
-					else
-					{
-						Game.getGrid().remove(l);
-						Game.getGrid().add(new Explosion(l));
-					}
-				}
-				nn = 0;
-				c = false;
-			}
-			
-			//if you haven't hit a wall yet, down is true
-			if (down == true)
-			{	
-				
-				//sets l x right of the location of the bomb
-				l = new Location(this.getLocation().getIntX(), this.getLocation().getIntY() - x);
-				//if l is a valid location on the grid
-				if (Game.getGrid().isValid(l))
-				{	
-					//if the location l is a brick, set right to false
-					for (int n = 0; n < Game.getGrid().get(l).size(); n++)
-					{
-						if(Game.getGrid().get(l).get(n) instanceof Brick)
-						{
-							c = true;
-							nn = n;
-						}
-					}
-					
-					if (c == true)
-					{
-						right = false;
-						Brick b = (Brick)Game.getGrid().get(l).get(nn);
-						//	if the brick is breakable, set the location of the brick to an explosion
-						if(b.isBreakable())
-						{
-							Game.getGrid().remove(l);
-							Game.getGrid().add(new Explosion(l));
-						}
-						//if it isn't a brick, set space to explosion
-					}
-					else
-					{
-						Game.getGrid().remove(l);
-						Game.getGrid().add(new Explosion(l));
-					}
-				}
-				nn = 0;
-				c = false;
-			}
+			Explosion explosion = new Explosion(l.clone());
+			Game.queueAdd(explosion);
+			current++;
 		}
-		//destroy the bomb
-		this.destroy();
+		current = 1;
+		while(down && current <= bombLength) {
+			l.add(-1d, 0d);
+			if(!Game.getGrid().isValid(l))
+				break;
+			for(Inhabitant inhabitant : Game.getGrid().get(l))
+				if(inhabitant instanceof Brick) {
+					Brick b = (Brick) inhabitant;
+					if(!b.isBreakable())
+						break;
+					b.destroy();
+					down = false;
+				}
+			Explosion explosion = new Explosion(l.clone());
+			Game.queueAdd(explosion);
+			current++;
+		}
+		current = 1;
+		while(left && current <= bombLength) {
+			l.add(-1d, 0d);
+			if(!Game.getGrid().isValid(l))
+				break;
+			for(Inhabitant inhabitant : Game.getGrid().get(l))
+				if(inhabitant instanceof Brick) {
+					Brick b = (Brick) inhabitant;
+					if(!b.isBreakable())
+						break;
+					b.destroy();
+					left = false;
+				}
+			Explosion explosion = new Explosion(l.clone());
+			Game.queueAdd(explosion);
+			current++;
+		}
+		current = 1;
+		while(right && current <= bombLength) {
+			l.add(-1d, 0d);
+			if(!Game.getGrid().isValid(l))
+				break;
+			for(Inhabitant inhabitant : Game.getGrid().get(l))
+				if(inhabitant instanceof Brick) {
+					Brick b = (Brick) inhabitant;
+					if(!b.isBreakable())
+						break;
+					b.destroy();
+					right = false;
+				}
+			Explosion explosion = new Explosion(l.clone());
+			Game.queueAdd(explosion);
+			current++;
+		}
 	}
+	
 	public class RemindTask extends TimerTask
 	{
 		private Bomb bomb;
