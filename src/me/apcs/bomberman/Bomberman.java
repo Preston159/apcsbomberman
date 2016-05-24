@@ -116,7 +116,14 @@ public class Bomberman extends Inhabitant {
 			this.step(Location.RIGHT);
 		}
 		if (keys.getKey(KeyEvent.VK_SPACE)) {
-			Game.queueAdd(new Bomb(this.getLocation().center(), bombSize, new ImageIcon("big_bomb.png")));
+			boolean place = true;
+			for(int i = 0;i < Game.getGrid().get(this.getLocation()).size();i++) {
+				Inhabitant inhabitant = Game.getGrid().get(this.getLocation()).get(i);
+				if(!(inhabitant instanceof Bomberman))
+					place = false;
+			}
+			if(place)
+				Game.queueAdd(new Bomb(this.getLocation().center(), bombSize, new ImageIcon("big_bomb.png")));
 		}
 	}
 }
