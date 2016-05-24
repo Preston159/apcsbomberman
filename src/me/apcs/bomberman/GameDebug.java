@@ -5,14 +5,15 @@ import java.awt.Container;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
-public class GameDebug extends JPanel implements ActionListener {
+public class GameDebug extends JPanel {
 	/**
 	 * 
 	 */
@@ -20,23 +21,21 @@ public class GameDebug extends JPanel implements ActionListener {
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 500;
 	
+	private static int tickLength;
+	
 	private int time;
 	private List<Bomberman> players;
 	private double scaleX, scaleY;
 	private Keyboard keys;
 	
 	public GameDebug() {
-		//initialize timer
-		time = 0;
-		Timer clock = new Timer(15, this);
-		clock.start();
-		
 		//set focus
 		setFocusable(true);
 		requestFocusInWindow();
 		
 		//initialize settings
 		Settings.init();
+		tickLength = (int) ((double) 1 / Integer.valueOf(Settings.p.getProperty("ticksPerSecond")) * 1000);
 		int gridSizeX = Integer.valueOf(Settings.p.getProperty("gridSizeX"));
 		int gridSizeY = Integer.valueOf(Settings.p.getProperty("gridSizeY"));
 		scaleX = WIDTH / gridSizeX;
@@ -58,6 +57,8 @@ public class GameDebug extends JPanel implements ActionListener {
 		keys = new Keyboard();
 		addKeyListener(keys);
 		players.get(0).setKey(keys);
+		
+		update();
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -68,22 +69,33 @@ public class GameDebug extends JPanel implements ActionListener {
 	}
 	
 	public void update() {
-		for(Inhabitant i : Game.toDestroy)
-			Game.getGrid().remove(i);
-		Game.toDestroy.clear();
-		for(Inhabitant i : Game.toAdd)
-			Game.getGrid().add(i);
-		Game.toAdd.clear();
-		for (Inhabitant i : Game.getGrid().getAll()) {
-			i.update();
-		}
+		new Timer().schedule(
+				new TimerTask() {
+					@Override
+					public void run() {
+						for(int i = 0;i < Game.toDestroy.size();i++)
+							Game.getGrid().add(Game.toDestroy.get(i));
+						Game.toDestroy.clear();
+						for(int i = 0;i < Game.toAdd.size();i++)
+							Game.getGrid().add(Game.toAdd.get(i));
+						Game.toAdd.clear();
+						for (Inhabitant i : Game.getGrid().getAll()) {
+							i.update();
+						}
+						//
+						time++;
+						repaint();
+						update();
+					}
+				}, tickLength
+		);
 	}
 	
-	public void actionPerformed(ActionEvent e) {
+/*	public void actionPerformed(ActionEvent e) {
 		time++;
 		update();
 		repaint();
-	}
+	}	*/
 
 	public static void main(String[] args) {
 		Game.createGrid();
