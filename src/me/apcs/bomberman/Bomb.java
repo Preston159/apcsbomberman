@@ -63,9 +63,7 @@ public class Bomb extends Inhabitant
 				current++;
 			}
 		}
-		catch (NullPointerException e) {
-			System.out.println("NPE 0");
-		}
+		catch (NullPointerException e) {}
 		
 		try {
 			current = 1;
@@ -88,9 +86,7 @@ public class Bomb extends Inhabitant
 				Game.queueAdd(explosion);
 				current++;
 			}
-		} catch (NullPointerException e) {
-			System.out.println("NPE 1");
-		}
+		} catch (NullPointerException e) {}
 		
 		try {
 			current = 1;
@@ -112,9 +108,7 @@ public class Bomb extends Inhabitant
 				Game.queueAdd(explosion);
 				current++;
 			}
-		} catch (NullPointerException e) {
-			System.out.println("NPE 2");
-		}
+		} catch (NullPointerException e) {}
 		
 		try {
 			current = 1;
@@ -136,17 +130,13 @@ public class Bomb extends Inhabitant
 				Game.queueAdd(explosion);
 				current++;
 			}
-		} catch (NullPointerException e) {
-			System.out.println("NPE 3");
-		}
+		} catch (NullPointerException e) {}
 		
 		try {
 			super.destroy();
 			exploded = true;
 		}
-		catch (NullPointerException e) {
-			System.out.println("NPE 4");
-		}
+		catch (NullPointerException e) {}
 	}
 	
 	public class RemindTask extends TimerTask
