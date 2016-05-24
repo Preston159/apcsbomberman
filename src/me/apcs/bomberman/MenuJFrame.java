@@ -66,7 +66,9 @@ public class MenuJFrame extends JFrame {
 		doPlay();
 		play.addActionListener(new ActionListener() { // play
 			public void actionPerformed(ActionEvent actionEvent) {
-				JOptionPane.showMessageDialog(null,  "Game loads here", "Bomberman", JOptionPane.INFORMATION_MESSAGE);
+				stopPlay();
+				GameDebug.main(null);
+				hideJ();
 			}
 		});
 		help.addActionListener(new ActionListener() { // disps instructs; go to dispInstructs() to edit instructions
@@ -92,6 +94,10 @@ public class MenuJFrame extends JFrame {
 			}
 		});
 	} //MenuJFrame
+	
+	private void hideJ() {
+		super.setVisible(false);
+	}
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
