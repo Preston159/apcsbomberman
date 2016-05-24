@@ -45,16 +45,17 @@ public class Grid<T extends Inhabitant> {
 		} //end if
 		
 		//initialize fields
-		this.rows = 10;
-		this.cols = 10;
+		this.rows = rows;
+		this.cols = cols;
 		this.tList = new ArrayList<>();
 	} //Grid
 	
 	/**
-	 * Constructs a <code>Grid</code> object with a specified number of rows and columns
+	 * Constructs a <code>Grid</code> object with a specified number of rows and columns and predefined <code>T</code> objects added
 	 * 
 	 * @param rows number of rows in the <code>Grid</code>
 	 * @param cols number of columns in the <code>Grid</code>
+	 * @param tList an <code>ArrayList</code> of predefined <code>T</code> objects to be added to the <code>Grid</code>
 	 * @throws <code>IllegalArgumentException</code> if <code>rows</code> is not in range
 	 * @throws <code>IllegalArgumentException</code> if <code>cols</code> is not in range
 	 */
@@ -70,11 +71,11 @@ public class Grid<T extends Inhabitant> {
 		} //end if
 		
 		//initialize fields
-		this.rows = 10;
-		this.cols = 10;
+		this.rows = rows;
+		this.cols = cols;
 		this.tList = new ArrayList<>();
 		
-		//add all the elements from tList to field
+		//add all the elements from the parameter to the field
 		this.tList.addAll(tList);
 	} //Grid
 	
@@ -276,6 +277,11 @@ public class Grid<T extends Inhabitant> {
 		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //remove
 	
+	/**
+	 * Creates and returns a copy of this <code>Grid</code>
+	 * 
+	 * @return a clone of this <code>Grid</code>
+	 */
 	@Override
 	public Grid<T> clone() {
 		return new Grid<T>(this.getNumRows(), this.getNumCols(), this.getAll());
