@@ -51,6 +51,34 @@ public class Grid<T extends Inhabitant> {
 	} //Grid
 	
 	/**
+	 * Constructs a <code>Grid</code> object with a specified number of rows and columns
+	 * 
+	 * @param rows number of rows in the <code>Grid</code>
+	 * @param cols number of columns in the <code>Grid</code>
+	 * @throws <code>IllegalArgumentException</code> if <code>rows</code> is not in range
+	 * @throws <code>IllegalArgumentException</code> if <code>cols</code> is not in range
+	 */
+	public Grid(int rows, int cols, ArrayList<T> tList) throws IllegalArgumentException {
+		//determine if rows is valid
+		if (rows <= 0) {
+			throw new IllegalArgumentException("rows <= 0");
+		} //end if
+		
+		//determine if cols is valid
+		if (cols <= 0) {
+			throw new IllegalArgumentException("cols <= 0");
+		} //end if
+		
+		//initialize fields
+		this.rows = 10;
+		this.cols = 10;
+		this.tList = new ArrayList<>();
+		
+		//add all the elements from tList to field
+		this.tList.addAll(tList);
+	} //Grid
+	
+	/**
 	 * Gets the number of rows in the <code>Grid</code>
 	 * 
 	 * @return the number of rows in the <code>Grid</code>
@@ -247,6 +275,11 @@ public class Grid<T extends Inhabitant> {
 		
 		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //remove
+	
+	@Override
+	public Grid<T> clone() {
+		return new Grid<T>(this.getNumRows(), this.getNumCols(), this.getAll());
+	} //clone
 	
 	/**
 	 * Returns a <code>String</code> representation of the contents of a <code>Grid</code> object
