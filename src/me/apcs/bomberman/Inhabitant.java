@@ -131,9 +131,11 @@ public class Inhabitant {
 			return true;
 		}
 		int direction = this.getLocation().getDirection(l);
-		for(Inhabitant i : Game.getGrid().get(l))
-			if(i instanceof Bomb || i instanceof Brick)
+		for(int i = 0;i < Game.getGrid().get(l).size();i++) {
+			Inhabitant inhabitant = Game.getGrid().get(l).get(i);
+			if(inhabitant instanceof Bomb || inhabitant instanceof Brick)
 				return false;
+		}
 		return true;
 	}
 	
