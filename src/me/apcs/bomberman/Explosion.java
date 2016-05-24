@@ -21,15 +21,15 @@ public class Explosion extends Inhabitant {
 	public void update() {
 		if(state >= 9) {
 			super.destroy();
-		} else {
-			state++;
-			//System.out.println(state);
+		}
+		else {
+			state += 1;
+		}
+		
+		for (Inhabitant i : Game.getGrid().get(this.getLocation())) {
+			if (i instanceof Brick || i instanceof Bomberman) {
+				Game.queueDestroy(i);
+			}
 		}
 	}
-	
-	@Override
-	public String toString() {
-		return "Explosion@" + super.getLocation().toString();
-	}
-	
 }

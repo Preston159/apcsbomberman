@@ -44,23 +44,13 @@ public class GameDebug extends JPanel {
 		players = new ArrayList<Bomberman>();
 		
 		//add one Inhabitant
-		players.add(new Bomberman(Color.BLUE, new Location(0,0), 0.1, 1, 1));
+		players.add(new Bomberman(Color.BLUE, new Location(0,0), 0.1, 1, 2));
 		Game.queueAdd(players.get(0));
 		
-		//add a Brick
-		Game.queueAdd(new Brick(Color.GRAY, new Location(0, 0), false, (ArrayList<Bomberman>) players));
-		Game.queueAdd(new Brick(Color.GRAY, new Location(1, 0), false, (ArrayList<Bomberman>) players));
-		Game.queueAdd(new Brick(Color.GRAY, new Location(2, 0), false, (ArrayList<Bomberman>) players));
-		Game.queueAdd(new Brick(Color.GRAY, new Location(3, 0), false, (ArrayList<Bomberman>) players));
-		Game.queueAdd(new Brick(Color.GRAY, new Location(4, 0), false, (ArrayList<Bomberman>) players));
-		Game.queueAdd(new Brick(Color.GRAY, new Location(5, 0), false, (ArrayList<Bomberman>) players));
-		Game.queueAdd(new Brick(Color.GRAY, new Location(6, 0), false, (ArrayList<Bomberman>) players));
-		Game.queueAdd(new Brick(Color.GRAY, new Location(7, 0), false, (ArrayList<Bomberman>) players));
-		Game.queueAdd(new Brick(Color.GRAY, new Location(8, 0), false, (ArrayList<Bomberman>) players));
-		Game.queueAdd(new Brick(Color.GRAY, new Location(9, 0), false, (ArrayList<Bomberman>) players));
-		
-		//add a Bomb
-		Game.queueAdd(new Bomb(new Location(4,4), 4));
+		//add some Bricks
+		for (int i = 0; i < 7; i++) {
+			Game.queueAdd(new Brick(Color.GRAY, new Location((int)(Math.random() * gridSizeX), (int)(Math.random() * gridSizeY)), false, (ArrayList<Bomberman>) players));
+		}
 		
 		//set up keyboard actions
 		keys = new Keyboard();
@@ -99,12 +89,6 @@ public class GameDebug extends JPanel {
 				}, tickLength
 		);
 	}
-	
-/*	public void actionPerformed(ActionEvent e) {
-		time++;
-		update();
-		repaint();
-	}	*/
 
 	public static void main(String[] args) {
 		Game.createGrid();

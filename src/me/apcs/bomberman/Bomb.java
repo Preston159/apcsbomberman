@@ -6,6 +6,7 @@ import java.util.TimerTask;
 
 public class Bomb extends Inhabitant
 {
+	private boolean exploded;
 	private int bombLength;
 	Timer timer;
 	
@@ -18,9 +19,10 @@ public class Bomb extends Inhabitant
 	public Bomb (Location l, int b)
 	{
 		super(Color.BLACK, l);
-		setSize(0.5);
+		setSize(1);
 		bombLength = b;
 		timer = new Timer();
+		exploded = false;
 	}
 	
 	/**
@@ -110,6 +112,7 @@ public class Bomb extends Inhabitant
 			current++;
 		}
 		super.destroy();
+		exploded = true;
 	}
 	
 	public class RemindTask extends TimerTask
@@ -122,7 +125,7 @@ public class Bomb extends Inhabitant
 		@Override
 		public void run() 
 		{
-			bomb.explode();			
+			bomb.explode();
 		}
 		
 	}
@@ -132,8 +135,7 @@ public class Bomb extends Inhabitant
 		timer.schedule(new RemindTask(this), 4000);
 	}
 	
-	@Override
-	public String toString() {
-		return "Bomb@" + super.getLocation().toString();
+	public boolean isExploded() {
+		return exploded;
 	}
 }
