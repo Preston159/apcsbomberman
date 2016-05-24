@@ -17,6 +17,8 @@ public class Bomberman extends Inhabitant {
 	private int bombSize;
 	private Keyboard keys;
 	
+	private int player;
+	
 	/**
 	 * Initializes the bomberman
 	 * @param c
@@ -114,7 +116,15 @@ public class Bomberman extends Inhabitant {
 			this.step(Location.RIGHT);
 		}
 		if (keys.getKey(KeyEvent.VK_SPACE)) {
-			Game.queueAdd(new Bomb(this.getLocation(), bombSize));
+			Game.queueAdd(new Bomb(this.getLocation().center(), bombSize));
 		}
+	}
+	
+	public void setPlayer(int _player) {
+		player = _player;
+	}
+	
+	public int getPlayer() {
+		return player;
 	}
 }
