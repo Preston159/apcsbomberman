@@ -21,10 +21,9 @@ public class Explosion extends Inhabitant {
 	public void update() {
 		if(state >= 9) {
 			super.destroy();
-		}
-		else {
-			state += 1;
-			System.out.println(state);
+		} else {
+			state++;
+			//System.out.println(state);
 		}
 	}
 	

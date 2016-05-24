@@ -58,9 +58,9 @@ public class Location {
 	public int getDirection(Location l)	{
 		double dx, dy;
 		dx = l.getX() - this.getX();
-		System.out.println("l:" + l.getX() + "," + this.getX());
+		//System.out.println("l:" + l.getX() + "," + this.getX());
 		dy = l.getY() - this.getY();
-		System.out.println("dy:" + dy);
+		//System.out.println("dy:" + dy);
 		if(Math.abs(dx) >= Math.abs(dy)) {
 			if(dx >= 0)
 				return RIGHT;
