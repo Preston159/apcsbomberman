@@ -40,12 +40,12 @@ public class Bomb extends Inhabitant
 		boolean up = true, down = true, left = true, right = true;
 		int current = 1;
 		Location l = this.getLocation().clone();
-		Grid<Inhabitant> g = Game.getGrid().clone();
 		while(up && current <= bombLength) BLOCK1: {
 			l.add(-1d, 0d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : g.get(l))
+			for(int i = 0;i < Game.getGrid().get(l).size();i++) {
+				Inhabitant inhabitant = Game.getGrid().get(l).get(i);
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
@@ -53,6 +53,7 @@ public class Bomb extends Inhabitant
 					b.destroy();
 					up = false;
 				}
+			}
 			Explosion explosion = new Explosion(l.clone());
 			Game.queueAdd(explosion);
 			current++;
@@ -63,14 +64,18 @@ public class Bomb extends Inhabitant
 			l.add(1d, 0d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : g.get(l))
+			if(!Game.getGrid().isValid(l))
+				break;
+			for(int i = 0;i < Game.getGrid().get(l).size();i++) {
+				Inhabitant inhabitant = Game.getGrid().get(l).get(i);
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
 						break BLOCK1;
 					b.destroy();
-					down = false;
+					up = false;
 				}
+			}
 			Explosion explosion = new Explosion(l.clone());
 			Game.queueAdd(explosion);
 			current++;
@@ -81,14 +86,18 @@ public class Bomb extends Inhabitant
 			l.add(0d, -1d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : g.get(l))
+			if(!Game.getGrid().isValid(l))
+				break;
+			for(int i = 0;i < Game.getGrid().get(l).size();i++) {
+				Inhabitant inhabitant = Game.getGrid().get(l).get(i);
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
 						break BLOCK1;
 					b.destroy();
-					left = false;
+					up = false;
 				}
+			}
 			Explosion explosion = new Explosion(l.clone());
 			Game.queueAdd(explosion);
 			current++;
@@ -99,14 +108,18 @@ public class Bomb extends Inhabitant
 			l.add(0d, 1d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : g.get(l))
+			if(!Game.getGrid().isValid(l))
+				break;
+			for(int i = 0;i < Game.getGrid().get(l).size();i++) {
+				Inhabitant inhabitant = Game.getGrid().get(l).get(i);
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
 						break BLOCK1;
 					b.destroy();
-					right = false;
+					up = false;
 				}
+			}
 			Explosion explosion = new Explosion(l.clone());
 			Game.queueAdd(explosion);
 			current++;
