@@ -288,6 +288,19 @@ public class Grid<T extends Inhabitant> {
 	} //clone
 	
 	/**
+	 * Checks to see if the specified <code>Location</code> is empty (has no <code>T</code>s)
+	 * 
+	 * @param l the location to check
+	 * @return <code>true</code> if the location is empty, <code>false</code> otherwise
+	 */
+	public boolean isEmpty(Location l) {
+		for(T t : this.tList)
+			if(t.getLocation().inSameSquare(l))
+				return false;
+		return true;
+	} //isEmpty
+	
+	/**
 	 * Returns a <code>String</code> representation of the contents of a <code>Grid</code> object
 	 * 
 	 * @return a <code>String</code> of all the elements in the <code>Grid</code>
