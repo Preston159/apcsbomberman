@@ -82,7 +82,7 @@ public class GameDebug extends JPanel {
 					@Override
 					public void run() {
 						for(int i = 0;i < Game.toDestroy.size();i++)
-							Game.getGrid().add(Game.toDestroy.get(i));
+							Game.getGrid().remove(Game.toDestroy.get(i));
 						Game.toDestroy.clear();
 						for(int i = 0;i < Game.toAdd.size();i++)
 							Game.getGrid().add(Game.toAdd.get(i));

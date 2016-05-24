@@ -61,9 +61,6 @@ public class Game {
 						for(Inhabitant i : grid.getAll()) {		
 							if(i == null)
 								continue;
-							if(i instanceof Explosion)
-								//increment all Bomb animations
-								((Explosion) i).incrementState();
 						}
 						render();
 						tick();

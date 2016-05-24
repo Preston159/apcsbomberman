@@ -109,6 +109,7 @@ public class Bomb extends Inhabitant
 			Game.queueAdd(explosion);
 			current++;
 		}
+		super.destroy();
 	}
 	
 	public class RemindTask extends TimerTask
