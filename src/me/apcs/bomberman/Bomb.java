@@ -43,83 +43,110 @@ public class Bomb extends Inhabitant
 		int current = 1;
 		Location l = this.getLocation().clone();
 		Grid<Inhabitant> g = Game.getGrid().clone();
-		while(up && current <= bombLength) BLOCK1: {
-			l.add(-1d, 0d);
-			if(!Game.getGrid().isValid(l))
-				break;
-			for (int j = 0; j < g.get(l).size(); j++) {
-				if(g.get(l).get(j) instanceof Brick) {
-					Brick b = (Brick) g.get(l).get(j);
-					if(!b.isBreakable())
-						break BLOCK1;
-					b.destroy();
-					up = false;
+		
+		try {
+			while(up && current <= bombLength) BLOCK1: {
+				l.add(-1d, 0d);
+				if(!Game.getGrid().isValid(l))
+					break;
+				for (int j = 0; j < g.get(l).size(); j++) {
+					if(g.get(l).get(j) instanceof Brick) {
+						Brick b = (Brick) g.get(l).get(j);
+						if(!b.isBreakable())
+							break BLOCK1;
+						b.destroy();
+						up = false;
+					}
 				}
+				Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
+				Game.queueAdd(explosion);
+				current++;
 			}
-			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
-			Game.queueAdd(explosion);
-			current++;
 		}
-		current = 1;
-		l = this.getLocation().clone();
-		while(down && current <= bombLength) BLOCK1: {
-			l.add(1d, 0d);
-			if(!Game.getGrid().isValid(l))
-				break;
-			
-			for (int j = 0; j < g.get(l).size(); j++) {
-				if(g.get(l).get(j) instanceof Brick) {
-					Brick b = (Brick) g.get(l).get(j);
-					if(!b.isBreakable())
-						break BLOCK1;
-					b.destroy();
-					down = false;
+		catch (NullPointerException e) {
+			System.out.println("NPE 0");
+		}
+		
+		try {
+			current = 1;
+			l = this.getLocation().clone();
+			while(down && current <= bombLength) BLOCK1: {
+				l.add(1d, 0d);
+				if(!Game.getGrid().isValid(l))
+					break;
+				
+				for (int j = 0; j < g.get(l).size(); j++) {
+					if(g.get(l).get(j) instanceof Brick) {
+						Brick b = (Brick) g.get(l).get(j);
+						if(!b.isBreakable())
+							break BLOCK1;
+						b.destroy();
+						down = false;
+					}
 				}
+				Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
+				Game.queueAdd(explosion);
+				current++;
 			}
-			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
-			Game.queueAdd(explosion);
-			current++;
+		} catch (NullPointerException e) {
+			System.out.println("NPE 1");
 		}
-		current = 1;
-		l = this.getLocation().clone();
-		while(left && current <= bombLength) BLOCK1: {
-			l.add(0d, -1d);
-			if(!Game.getGrid().isValid(l))
-				break;
-			for (int j = 0; j < g.get(l).size(); j++) {
-				if(g.get(l).get(j) instanceof Brick) {
-					Brick b = (Brick) g.get(l).get(j);
-					if(!b.isBreakable())
-						break BLOCK1;
-					b.destroy();
-					left = false;
+		
+		try {
+			current = 1;
+			l = this.getLocation().clone();
+			while(left && current <= bombLength) BLOCK1: {
+				l.add(0d, -1d);
+				if(!Game.getGrid().isValid(l))
+					break;
+				for (int j = 0; j < g.get(l).size(); j++) {
+					if(g.get(l).get(j) instanceof Brick) {
+						Brick b = (Brick) g.get(l).get(j);
+						if(!b.isBreakable())
+							break BLOCK1;
+						b.destroy();
+						left = false;
+					}
 				}
+				Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
+				Game.queueAdd(explosion);
+				current++;
 			}
-			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
-			Game.queueAdd(explosion);
-			current++;
+		} catch (NullPointerException e) {
+			System.out.println("NPE 2");
 		}
-		current = 1;
-		l = this.getLocation().clone();
-		while(right && current <= bombLength) BLOCK1: {
-			l.add(0d, 1d);
-			if(!Game.getGrid().isValid(l))
-				break;
-			for (int j = 0; j < g.get(l).size(); j++) {
-				if(g.get(l).get(j) instanceof Brick) {
-					Brick b = (Brick) g.get(l).get(j);
-					if(!b.isBreakable())
-						break BLOCK1;
-					b.destroy();
-					right = false;
+		
+		try {
+			current = 1;
+			l = this.getLocation().clone();
+			while(right && current <= bombLength) BLOCK1: {
+				l.add(0d, 1d);
+				if(!Game.getGrid().isValid(l))
+					break;
+				for (int j = 0; j < g.get(l).size(); j++) {
+					if(g.get(l).get(j) instanceof Brick) {
+						Brick b = (Brick) g.get(l).get(j);
+						if(!b.isBreakable())
+							break BLOCK1;
+						b.destroy();
+						right = false;
+					}
 				}
+				Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
+				Game.queueAdd(explosion);
+				current++;
 			}
-			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
-			Game.queueAdd(explosion);
-			current++;
+		} catch (NullPointerException e) {
+			System.out.println("NPE 3");
 		}
-		super.destroy();
-		exploded = true;
+		
+		try {
+			super.destroy();
+			exploded = true;
+		}
+		catch (NullPointerException e) {
+			System.out.println("NPE 4");
+		}
 	}
 	
 	public class RemindTask extends TimerTask
