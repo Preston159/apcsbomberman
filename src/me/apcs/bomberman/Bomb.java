@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.ImageIcon;
+
 public class Bomb extends Inhabitant
 {
 	private boolean exploded;
@@ -16,9 +18,9 @@ public class Bomb extends Inhabitant
 	 * @param l
 	 * @param b
 	 */
-	public Bomb (Location l, int b)
+	public Bomb (Location l, int b, ImageIcon i)
 	{
-		super(Color.BLACK, l);
+		super(Color.BLACK, l, i);
 		setSize(1);
 		bombLength = b;
 		timer = new Timer();
@@ -53,7 +55,7 @@ public class Bomb extends Inhabitant
 					b.destroy();
 					up = false;
 				}
-			Explosion explosion = new Explosion(l.clone());
+			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
 			Game.queueAdd(explosion);
 			current++;
 		}
@@ -71,7 +73,7 @@ public class Bomb extends Inhabitant
 					b.destroy();
 					down = false;
 				}
-			Explosion explosion = new Explosion(l.clone());
+			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
 			Game.queueAdd(explosion);
 			current++;
 		}
@@ -89,7 +91,7 @@ public class Bomb extends Inhabitant
 					b.destroy();
 					left = false;
 				}
-			Explosion explosion = new Explosion(l.clone());
+			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
 			Game.queueAdd(explosion);
 			current++;
 		}
@@ -107,7 +109,7 @@ public class Bomb extends Inhabitant
 					b.destroy();
 					right = false;
 				}
-			Explosion explosion = new Explosion(l.clone());
+			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
 			Game.queueAdd(explosion);
 			current++;
 		}

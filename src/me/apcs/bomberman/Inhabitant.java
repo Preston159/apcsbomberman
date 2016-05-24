@@ -10,7 +10,11 @@ package me.apcs.bomberman;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.util.UUID;
+
+import javax.swing.ImageIcon;
 
 public class Inhabitant {
 	
@@ -22,26 +26,18 @@ public class Inhabitant {
 	private Location loc;
 	private double speed;
 	private double size;
-	
+	private Image image;
 	/**
 	 * Create <code>Inhabitant</code>
 	 * @param c	<code>Inhabitant</code>'s <code>Color</code>
 	 * @param l	<code>Inhabitant</code>'s <code>Location</code>
 	 */
-	public Inhabitant(Color c, Location l) {
+	public Inhabitant(Color c, Location l, ImageIcon i) {
 		color = c;
 		loc = l;
+		image = i.getImage();
 		speed = 0d;
 		size = 1.0;
-		id = UUID.randomUUID();
-	}
-	
-	/**
-	 * Create <code>Inhabitant</code>
-	 */
-	public Inhabitant() {
-		this(new Color(255, 255, 255), new Location(0, 0));
-		speed = 0d;
 		id = UUID.randomUUID();
 	}
 	
@@ -91,6 +87,10 @@ public class Inhabitant {
 		return size;
 	}
 	
+	public Image getImage()
+	{
+		return image;
+	}
 	/**
 	 * Moves <code>Inhabitant</code> by the given distance
 	 * @param dx	Change in x
@@ -176,8 +176,9 @@ public class Inhabitant {
 	}
 	
 	public void render(Graphics g, double scaleX, double scaleY) {
-		g.setColor(getColor());
-		g.fillRect((int)((getLocation().getX() - 0.5) * scaleX), (int)((getLocation().getY() - 0.5) * scaleY), (int)(scaleX * size), (int)(scaleY * size));
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(getColor());
+		g2d.drawImage(getImage(), (int)(scaleX * (getLocation().getX() - 0.5)), (int)(scaleY * (getLocation().getY() - 0.5)), null);
 	}
 	
 	/**

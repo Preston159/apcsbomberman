@@ -6,12 +6,14 @@ package me.apcs.bomberman;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
+
 public class Explosion extends Inhabitant {
 	
 	private int state = 0;
 	
-	public Explosion(Location l) {
-		super(Color.RED, l);
+	public Explosion(Location l, ImageIcon i) {
+		super(Color.RED, l, i);
 	}
 	
 	/**

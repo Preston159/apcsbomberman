@@ -10,6 +10,7 @@ import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -47,7 +48,7 @@ public class GameDebug extends JPanel {
 		players = new ArrayList<Bomberman>();
 		
 		//add one Inhabitant
-		players.add(new Bomberman(Color.BLUE, new Location(1,1), 0.1, 1, 2));
+		players.add(new Bomberman(Color.BLUE, new Location(1,1), new ImageIcon("bombermanSprite.png"), 0.1, 1, 2));
 		Game.queueAdd(players.get(0));
 		
 		//add some Bricks
@@ -113,47 +114,47 @@ public class GameDebug extends JPanel {
 	
 	private static ArrayList<Brick> genBricks() {
 		ArrayList<Brick> bricks = new ArrayList<Brick>();
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(1, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(2, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(3, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(4, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(5, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(6, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(7, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(8, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 0), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(1, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(2, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(3, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(4, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(5, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(6, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(7, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(8, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 9), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 1), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 1), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 2), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 2), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 3), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 3), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 4), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 4), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 5), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 5), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 6), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 6), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 7), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 7), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 8), false));
-		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 8), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(1, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(2, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(3, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(4, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(5, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(6, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(7, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(8, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 0), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(1, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(2, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(3, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(4, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(5, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(6, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(7, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(8, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 9), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 1), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 1), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 2), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 2), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 3), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 3), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 4), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 4), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 5), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 5), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 6), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 6), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 7), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 7), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(0, 8), new ImageIcon("brick.png"), false));
+		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 8), new ImageIcon("brick.png"), false));
 		for(int i = 0;i < 8;i++) {
 			Location l = new Location((int) (Math.random() * gridSizeX), (int) (Math.random() * gridSizeY));
 			if(!Game.getGrid().isEmpty(l))
 				continue;
-			bricks.add(new Brick(Color.GRAY, l, true));
+			bricks.add(new Brick(Color.GRAY, l, new ImageIcon("brick.png"), true));
 		}
 		return bricks;
 	}

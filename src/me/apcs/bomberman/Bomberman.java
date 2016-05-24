@@ -10,6 +10,8 @@ package me.apcs.bomberman;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
+
 public class Bomberman extends Inhabitant {
 
 	private int bombCapacity;
@@ -25,9 +27,9 @@ public class Bomberman extends Inhabitant {
 	 * @param bc
 	 * @param bs
 	 */
-	public Bomberman(Color c, Location l, double s, int bc, int bs)
+	public Bomberman(Color c, Location l, ImageIcon i, double s, int bc, int bs)
 	{
-		super(c, l);
+		super(c, l, i);
 		super.setSpeed(s);
 		bombCapacity = bc;
 		kickBomb = false;
@@ -114,7 +116,7 @@ public class Bomberman extends Inhabitant {
 			this.step(Location.RIGHT);
 		}
 		if (keys.getKey(KeyEvent.VK_SPACE)) {
-			Game.queueAdd(new Bomb(this.getLocation(), bombSize));
+			Game.queueAdd(new Bomb(this.getLocation(), bombSize, new ImageIcon("big_bomb.png")));
 		}
 	}
 }
