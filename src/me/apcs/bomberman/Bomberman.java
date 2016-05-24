@@ -116,7 +116,7 @@ public class Bomberman extends Inhabitant {
 			this.step(Location.RIGHT);
 		}
 		if (keys.getKey(KeyEvent.VK_SPACE)) {
-			Game.queueAdd(new Bomb(this.getLocation(), bombSize, new ImageIcon("big_bomb.png")));
+			Game.queueAdd(new Bomb(this.getLocation().center(), bombSize, new ImageIcon("big_bomb.png")));
 		}
 	}
 }
