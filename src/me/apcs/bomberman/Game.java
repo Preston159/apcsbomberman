@@ -69,25 +69,25 @@ public class Game {
 		);
 	}
 	
-	public static void queueDestroy(Inhabitant i) {
+	public static void queueDestroy(Inhabitant inhabitant) {
 		//System.out.println("Adding to destroy queue: " + i);
 		try {
-			for(Inhabitant inhabitant : toDestroy)
-				if(i.getId().equals(inhabitant.getId()))
+			for(int i = 0;i < toDestroy.size();i++)
+				if(toDestroy.get(i).getId().equals(inhabitant.getId()))
 					return;
-			toDestroy.add(i);
+			toDestroy.add(inhabitant);
 		} catch(NullPointerException npe) {
 			return;
 		}
 	}
 	
-	public static void queueAdd(Inhabitant i) {
+	public static void queueAdd(Inhabitant inhabitant) {
 		//System.out.println("Adding to add queue: " + i);
 		try {
-			for(Inhabitant inhabitant : toAdd)
-				if(i.getId().equals(inhabitant.getId()))
+			for(int i = 0;i < toAdd.size();i++)
+				if(toAdd.get(i).getId().equals(inhabitant.getId()))
 					return;
-			toAdd.add(i);
+			toAdd.add(inhabitant);
 		} catch(NullPointerException npe) {
 			return;
 		}

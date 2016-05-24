@@ -79,16 +79,16 @@ public class GameDebug extends JPanel {
 				new TimerTask() {
 					@Override
 					public void run() {
+						for(int i = 0;i < Game.getGrid().getAll().size();i++)
+							try {
+								Game.getGrid().getAll().get(i).update();
+							} catch(NullPointerException npe) { }
 						for(int i = 0;i < Game.toDestroy.size();i++)
 							Game.getGrid().remove(Game.toDestroy.get(i));
 						Game.toDestroy.clear();
 						for(int i = 0;i < Game.toAdd.size();i++)
 							Game.getGrid().add(Game.toAdd.get(i));
 						Game.toAdd.clear();
-						for(int i = 0;i < Game.getGrid().getAll().size();i++)
-							try {
-								Game.getGrid().getAll().get(i).update();
-							} catch(NullPointerException npe) { }
 						//
 						time++;
 						repaint();
@@ -151,9 +151,8 @@ public class GameDebug extends JPanel {
 		bricks.add(new Brick(Color.DARK_GRAY, new Location(9, 8), false));
 		for(int i = 0;i < 8;i++) {
 			Location l = new Location((int) (Math.random() * gridSizeX), (int) (Math.random() * gridSizeY));
-			if(!Game.getGrid().isEmpty(l))
-				continue;
-			bricks.add(new Brick(Color.GRAY, l, true));
+			if(Game.getGrid().isEmpty(l))
+				bricks.add(new Brick(Color.GRAY, l, true));
 		}
 		return bricks;
 	}
