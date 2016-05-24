@@ -39,7 +39,7 @@ public class Bomb extends Inhabitant
 		int current = 1;
 		Location l = this.getLocation().clone();
 		Grid<Inhabitant> g = Game.getGrid().clone();
-		while(up && current <= bombLength) {
+		while(up && current <= bombLength) BLOCK1: {
 			l.add(-1d, 0d);
 			if(!Game.getGrid().isValid(l))
 				break;
@@ -47,7 +47,7 @@ public class Bomb extends Inhabitant
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
-						break;
+						break BLOCK1;
 					b.destroy();
 					up = false;
 				}
@@ -57,7 +57,7 @@ public class Bomb extends Inhabitant
 		}
 		current = 1;
 		l = this.getLocation().clone();
-		while(down && current <= bombLength) {
+		while(down && current <= bombLength) BLOCK1: {
 			l.add(1d, 0d);
 			if(!Game.getGrid().isValid(l))
 				break;
@@ -65,7 +65,7 @@ public class Bomb extends Inhabitant
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
-						break;
+						break BLOCK1;
 					b.destroy();
 					down = false;
 				}
@@ -75,7 +75,7 @@ public class Bomb extends Inhabitant
 		}
 		current = 1;
 		l = this.getLocation().clone();
-		while(left && current <= bombLength) {
+		while(left && current <= bombLength) BLOCK1: {
 			l.add(0d, -1d);
 			if(!Game.getGrid().isValid(l))
 				break;
@@ -83,7 +83,7 @@ public class Bomb extends Inhabitant
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
-						break;
+						break BLOCK1;
 					b.destroy();
 					left = false;
 				}
@@ -93,7 +93,7 @@ public class Bomb extends Inhabitant
 		}
 		current = 1;
 		l = this.getLocation().clone();
-		while(right && current <= bombLength) {
+		while(right && current <= bombLength) BLOCK1: {
 			l.add(0d, 1d);
 			if(!Game.getGrid().isValid(l))
 				break;
@@ -101,7 +101,7 @@ public class Bomb extends Inhabitant
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
-						break;
+						break BLOCK1;
 					b.destroy();
 					right = false;
 				}
