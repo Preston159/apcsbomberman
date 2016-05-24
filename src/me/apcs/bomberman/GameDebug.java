@@ -63,9 +63,8 @@ public class GameDebug extends JPanel {
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for (Inhabitant i : Game.getGrid().getAll()) {
-			i.render(g, scaleX, scaleY);
-		}
+		for(int i = 0;i < Game.getGrid().getAll().size();i++)
+			Game.getGrid().getAll().get(i).render(g, scaleX, scaleY);
 	}
 	
 	public void update() {
@@ -79,9 +78,8 @@ public class GameDebug extends JPanel {
 						for(int i = 0;i < Game.toAdd.size();i++)
 							Game.getGrid().add(Game.toAdd.get(i));
 						Game.toAdd.clear();
-						for (Inhabitant i : Game.getGrid().getAll()) {
-							i.update();
-						}
+						for(int i = 0;i < Game.getGrid().getAll().size();i++)
+							Game.getGrid().getAll().get(i).update();
 						//
 						time++;
 						repaint();
