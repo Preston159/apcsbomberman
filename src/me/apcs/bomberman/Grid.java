@@ -133,10 +133,10 @@ public class Grid<T extends Inhabitant> {
 	 * @return the element at the specified position - if <code>i</code> is valid
 	 * @throws <code>IndexOutOfBoundsException</code> - if <code>i</code> is not in range
 	 */
-	public T get(int i) throws IndexOutOfBoundsException {
-		//determine if i is in range
-		if (i >= 0 && i < this.tList.size()) {
-			return this.tList.get(i);
+	public T get(int j) throws IndexOutOfBoundsException {
+		//determine if j is in range
+		if (j >= 0 && j < this.tList.size()) {
+			return this.tList.get(j);
 		} //end if
 		
 		throw new IndexOutOfBoundsException("i is not in range!");
@@ -156,11 +156,11 @@ public class Grid<T extends Inhabitant> {
 			ArrayList<T> tempList = new ArrayList<>();
 			
 			//traverse tList
-			for (T t : this.tList) {
-				//determine if t is in the same square
-				if (t.getLocation().inSameSquare(l)) {
-					//add t to tempList
-					tempList.add(t);
+			for (int j = 0; j < this.tList.size(); j++) {
+				//determine if tList element is in the same square
+				if (this.tList.get(j).getLocation().inSameSquare(l)) {
+					//add tList element to tempList
+					tempList.add(this.tList.get(j)); 
 				} //end if
 			} //end for
 			
@@ -185,14 +185,14 @@ public class Grid<T extends Inhabitant> {
 			ArrayList<T> tempList = new ArrayList<>();
 			
 			//traverse tList
-			for (T t : this.tList) {
-				//determine if t is in the same square
-				if (t.getLocation().inSameSquare(l)) {
-					//add t to tempList
-					tempList.add(t);
+			for (int j = 0; j < this.tList.size(); j++) {
+				//determine if tList element is in the same square
+				if (this.tList.get(j).getLocation().inSameSquare(l)) {
+					//add tList element to tempList
+					tempList.add(this.tList.get(j));
 					
-					//set t to newT
-					this.tList.set(this.tList.indexOf(t), newT);
+					//set tList element to newT
+					this.tList.set(j, newT);
 				} //end if
 			} //end for
 			
@@ -209,11 +209,11 @@ public class Grid<T extends Inhabitant> {
 	 */
 	public void removeAll(Inhabitant i) {
 		//traverse tList
-		for (T t : this.tList) {
-			//determine if t has a matching Inhabitant type
-			if (t.getClass().equals(i.getClass())) {
-				//remove t from tList
-				this.tList.remove(t);
+		for (int j = 0; j < this.tList.size(); j++) {
+			//determine if tList element has a matching Inhabitant type
+			if (this.tList.get(j).getClass().equals(i.getClass())) {
+				//remove tList element from tList
+				this.tList.remove(j);
 			} //end if
 		} //end for
 	} //removeAll
@@ -238,11 +238,11 @@ public class Grid<T extends Inhabitant> {
 		//determine if l is a valid location
 		if (isValid(l)) {
 			//traverse tList
-			for (T t : this.tList) {
-				//determine if t is in the same square
-				if (t.getLocation().inSameSquare(l)) {
-					//remove t from tList
-					this.tList.remove(t);
+			for (int j = 0; j < this.tList.size(); j++) {
+				//determine if tList element is in the same square
+				if (this.tList.get(j).getLocation().inSameSquare(l)) {
+					//remove tList element from tList
+					this.tList.remove(j);
 				} //end if
 			} //end for
 			
@@ -263,11 +263,11 @@ public class Grid<T extends Inhabitant> {
 		//determine if l is a valid location
 		if (isValid(l)) {
 			//traverse tList
-			for (T t : this.tList) {
+			for (int j = 0; j < this.tList.size(); j++) {
 				//determine if t is in the same square and has a matching Inhabitant type
-				if (t.getLocation().inSameSquare(l) && t.getClass().equals(i.getClass())) {
-					//remove t from tList
-					this.tList.remove(t);
+				if (this.tList.get(j).getLocation().inSameSquare(l) && this.tList.get(j).getClass().equals(i.getClass())) {
+					//remove tList element from tList
+					this.tList.remove(j);
 				} //end if
 			} //end for
 					
@@ -288,15 +288,20 @@ public class Grid<T extends Inhabitant> {
 	} //clone
 	
 	/**
-	 * Checks to see if the specified <code>Location</code> is empty (has no <code>T</code>s)
+	 * Checks to see if the specified <code>Location</code> in the <code>Grid</code> is empty
 	 * 
 	 * @param l the location to check
-	 * @return <code>true</code> if the location is empty, <code>false</code> otherwise
+	 * @return <code>true</code> - if the location is empty, <code>false</code> otherwise
 	 */
 	public boolean isEmpty(Location l) {
-		for(T t : this.tList)
-			if(t.getLocation().inSameSquare(l))
+		//traverse tList
+		for (int j = 0; j < this.tList.size(); j++) {
+			//determine if tList element is in the same square as l
+			if (this.tList.get(j).getLocation().inSameSquare(l)) {
 				return false;
+			} //end if
+		} //end for
+		
 		return true;
 	} //isEmpty
 	
