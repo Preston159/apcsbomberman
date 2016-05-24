@@ -93,6 +93,10 @@ public class Location {
 		return new Location(x - 0.5, y - 0.5);
 	}
 	
+	public Location center() {
+		return new Location((int) x, (int) y);
+	}
+	
 	@Override
 	public String toString() {
 		return x + "," + y;
