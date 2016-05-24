@@ -195,7 +195,7 @@ public class Grid<T extends Inhabitant> {
 	 * @param i the <code>Inhabitant</code> to be removed
 	 */
 	public void remove(Inhabitant i) {
-		//remove i from the Grid
+		//remove i from tList
 		this.tList.remove(i);
 	} //remove
 	
