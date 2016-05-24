@@ -125,13 +125,15 @@ public class Inhabitant {
 	 * @return	True if the given <code>Location</code> is on the given <code>Grid</code> and does not contain a <code>Bomb</code> or <code>Brick</code>
 	 */
 	public boolean canMove(Grid<Inhabitant> g, Location l) {
-		if(this.getLocation().inSameSquare(l))
-			return true;
-		int direction = this.getLocation().getDirection(l);
-		Location test = this.getLocation().clone();
-		test.addDirection(direction, 0.1);
-		if(test.inSameSquare(l))
+		if(!Game.getGrid().isValid(l))
 			return false;
+		if(this.getLocation().inSameSquare(l)) {
+			return true;
+		}
+		int direction = this.getLocation().getDirection(l);
+		for(Inhabitant i : Game.getGrid().get(l))
+			if(i instanceof Bomb || i instanceof Brick)
+				return false;
 		return true;
 	}
 	
