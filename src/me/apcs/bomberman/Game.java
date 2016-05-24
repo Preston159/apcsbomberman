@@ -73,17 +73,25 @@ public class Game {
 	}
 	
 	public static void queueDestroy(Inhabitant i) {
-		for(Inhabitant inhabitant : toDestroy)
-			if(i.getId().equals(inhabitant.getId()))
-				return;
-		toDestroy.add(i);
+		try {
+			for(Inhabitant inhabitant : toDestroy)
+				if(i.getId().equals(inhabitant.getId()))
+					return;
+			toDestroy.add(i);
+		} catch(NullPointerException npe) {
+			return;
+		}
 	}
 	
 	public static void queueAdd(Inhabitant i) {
-		for(Inhabitant inhabitant : toAdd)
-			if(i.getId().equals(inhabitant.getId()))
-				return;
-		toAdd.add(i);
+		try {
+			for(Inhabitant inhabitant : toAdd)
+				if(i.getId().equals(inhabitant.getId()))
+					return;
+			toAdd.add(i);
+		} catch(NullPointerException npe) {
+			return;
+		}
 	}
 	
 	/**

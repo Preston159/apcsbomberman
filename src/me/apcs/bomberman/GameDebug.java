@@ -48,7 +48,16 @@ public class GameDebug extends JPanel {
 		Game.queueAdd(players.get(0));
 		
 		//add a Brick
-		Game.queueAdd(new Brick(Color.GRAY, new Location(1, 1), true, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(0, 0), false, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(1, 0), false, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(2, 0), false, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(3, 0), false, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(4, 0), false, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(5, 0), false, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(6, 0), false, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(7, 0), false, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(8, 0), false, (ArrayList<Bomberman>) players));
+		Game.queueAdd(new Brick(Color.GRAY, new Location(9, 0), false, (ArrayList<Bomberman>) players));
 		
 		//add a Bomb
 		Game.queueAdd(new Bomb(new Location(4,4), 4));
@@ -79,7 +88,9 @@ public class GameDebug extends JPanel {
 							Game.getGrid().add(Game.toAdd.get(i));
 						Game.toAdd.clear();
 						for(int i = 0;i < Game.getGrid().getAll().size();i++)
-							Game.getGrid().getAll().get(i).update();
+							try {
+								Game.getGrid().getAll().get(i).update();
+							} catch(NullPointerException npe) { }
 						//
 						time++;
 						repaint();
