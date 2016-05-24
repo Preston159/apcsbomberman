@@ -57,4 +57,9 @@ public class Powerup extends Inhabitant {
 	public void setPowerUp(Type t) {
 		type = t;
 	}
+	
+	@Override
+	public String toString() {
+		return "Powerup@" + super.getLocation().toString();
+	}
 }

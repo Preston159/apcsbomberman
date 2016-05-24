@@ -70,6 +70,7 @@ public class Game {
 	}
 	
 	public static void queueDestroy(Inhabitant i) {
+		System.out.println("Adding to destroy queue: " + i);
 		try {
 			for(Inhabitant inhabitant : toDestroy)
 				if(i.getId().equals(inhabitant.getId()))
@@ -81,6 +82,7 @@ public class Game {
 	}
 	
 	public static void queueAdd(Inhabitant i) {
+		System.out.println("Adding to add queue: " + i);
 		try {
 			for(Inhabitant inhabitant : toAdd)
 				if(i.getId().equals(inhabitant.getId()))

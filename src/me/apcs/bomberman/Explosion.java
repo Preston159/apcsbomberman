@@ -28,4 +28,9 @@ public class Explosion extends Inhabitant {
 		}
 	}
 	
+	@Override
+	public String toString() {
+		return "Explosion@" + super.getLocation().toString();
+	}
+	
 }

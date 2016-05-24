@@ -131,4 +131,9 @@ public class Bomb extends Inhabitant
 	{
 		timer.schedule(new RemindTask(this), 4000);
 	}
+	
+	@Override
+	public String toString() {
+		return "Bomb@" + super.getLocation().toString();
+	}
 }
