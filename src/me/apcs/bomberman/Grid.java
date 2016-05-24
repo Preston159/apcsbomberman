@@ -121,15 +121,19 @@ public class Grid<T extends Inhabitant> {
 	 * @throws <code>IndexOutOfBoundsException</code> - if <code>l</code>'s coordinates are not in range
 	 */
 	public ArrayList<T> get(Location l) throws IndexOutOfBoundsException {
-		//determine if l is a valid location
+		//determine if l is a valid Location
 		if (isValid(l)) {
 			//declare variable
 			ArrayList<T> tempList = new ArrayList<>();
 			
-			//traverse tList, filter out elements by Location, and add remaining elements to tempList
-			for(T i : this.tList)
-				if(i.getLocation().inSameSquare(l))
-					tempList.add(i);
+			//traverse tList
+			for (T t : this.tList) {
+				//determine if t is in the same square
+				if (t.getLocation().inSameSquare(l)) {
+					//add t to tempList
+					tempList.add(t);
+				} //end if
+			} //end for
 			
 			return tempList;
 		} //end if
@@ -151,8 +155,17 @@ public class Grid<T extends Inhabitant> {
 			//declare variable
 			ArrayList<T> tempList = new ArrayList<>();
 			
-			//traverse tList, filter out elements by Location, store old elements in tempList, and set old elements to newT
-			this.tList.stream().filter(t -> t.getLocation().inSameSquare(l)).forEach(t -> {tempList.add(t); tList.set(tList.indexOf(t), newT);});
+			//traverse tList
+			for (T t : this.tList) {
+				//determine if t is in the same square
+				if (t.getLocation().inSameSquare(l)) {
+					//add t to tempList
+					tempList.add(t);
+					
+					//set t to newT
+					this.tList.set(this.tList.indexOf(t), newT);
+				} //end if
+			} //end for
 			
 			return tempList;
 		} //end if
@@ -166,8 +179,14 @@ public class Grid<T extends Inhabitant> {
 	 * @param i contains the <code>Inhabitant</code> type of the objects needing to be removed
 	 */
 	public void removeAll(Inhabitant i) {
-		//traverse tList and remove elements with a matching Inhabitant type
-		this.tList.removeIf(t -> t.getClass().equals(i.getClass()));
+		//traverse tList
+		for (T t : this.tList) {
+			//determine if t has a matching Inhabitant type
+			if (t.getClass().equals(i.getClass())) {
+				//remove t from tList
+				this.tList.remove(t);
+			} //end if
+		} //end for
 	} //removeAll
 	
 	/**
@@ -176,7 +195,7 @@ public class Grid<T extends Inhabitant> {
 	 * @param i the <code>Inhabitant</code> to be removed
 	 */
 	public void remove(Inhabitant i) {
-		//remove Inhabitant from the Grid
+		//remove i from the Grid
 		this.tList.remove(i);
 	} //remove
 	
@@ -189,8 +208,14 @@ public class Grid<T extends Inhabitant> {
 	public void remove(Location l) throws IndexOutOfBoundsException {
 		//determine if l is a valid location
 		if (isValid(l)) {
-			//traverse tList and remove elements with a matching Location
-			this.tList.removeIf(t -> t.getLocation().inSameSquare(l));
+			//traverse tList
+			for (T t : this.tList) {
+				//determine if t is in the same square
+				if (t.getLocation().inSameSquare(l)) {
+					//remove t from tList
+					this.tList.remove(t);
+				} //end if
+			} //end for
 			
 			return;
 		} //end if
@@ -203,10 +228,24 @@ public class Grid<T extends Inhabitant> {
 	 * 
 	 * @param l contains the <code>Location</code> of the objects needing to be removed
 	 * @param i contains the <code>Inhabitant</code> type of the objects needing to be removed
+	 * @throws <code>IndexOutOfBoundsException</code> - if <code>l</code>'s coordinates are not in range
 	 */
 	public void remove(Location l, Inhabitant i) {
-		//traverse tList and remove elements with a matching Location and Inhabitant type
-		this.tList.removeIf(t -> t.getLocation().inSameSquare(l) && t.getClass().equals(i.getClass()));
+		//determine if l is a valid location
+		if (isValid(l)) {
+			//traverse tList
+			for (T t : this.tList) {
+				//determine if t is in the same square and has a matching Inhabitant type
+				if (t.getLocation().inSameSquare(l) && t.getClass().equals(i.getClass())) {
+					//remove t from tList
+					this.tList.remove(t);
+				} //end if
+			} //end for
+					
+			return;
+		} //end if
+		
+		throw new IndexOutOfBoundsException("Location's coordinates are not in range!");
 	} //remove
 	
 	/**
