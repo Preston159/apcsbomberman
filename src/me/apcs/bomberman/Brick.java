@@ -36,4 +36,9 @@ public class Brick extends Inhabitant
 	public void setPlayerList(ArrayList<Bomberman> list) {
 		playerList = list;
 	}
+	
+	@Override
+	public String toString() {
+		return "Brick@" + super.getLocation().toString();
+	}
 }

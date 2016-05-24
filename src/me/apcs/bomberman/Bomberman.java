@@ -114,5 +114,8 @@ public class Bomberman extends Inhabitant {
 		}
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Bomberman@" + super.getLocation().toString();
+	}
 }

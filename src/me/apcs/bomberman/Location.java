@@ -92,4 +92,9 @@ public class Location {
 	public Location clone() {
 		return new Location(x - 0.5, y - 0.5);
 	}
+	
+	@Override
+	public String toString() {
+		return x + "," + y;
+	}
 }

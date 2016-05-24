@@ -199,4 +199,9 @@ public class Inhabitant {
 	public UUID getId() {
 		return id;
 	}
+	
+	@Override
+	public String toString() {
+		return "Inhabitant@" + loc.toString();
+	}
 }
