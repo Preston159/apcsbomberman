@@ -38,11 +38,12 @@ public class Bomb extends Inhabitant
 		boolean up = true, down = true, left = true, right = true;
 		int current = 1;
 		Location l = this.getLocation().clone();
+		Grid<Inhabitant> g = Game.getGrid().clone();
 		while(up && current <= bombLength) {
 			l.add(-1d, 0d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : Game.getGrid().get(l))
+			for(Inhabitant inhabitant : g.get(l))
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
@@ -60,7 +61,7 @@ public class Bomb extends Inhabitant
 			l.add(1d, 0d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : Game.getGrid().get(l))
+			for(Inhabitant inhabitant : g.get(l))
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
@@ -78,7 +79,7 @@ public class Bomb extends Inhabitant
 			l.add(0d, -1d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : Game.getGrid().get(l))
+			for(Inhabitant inhabitant : g.get(l))
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
@@ -96,7 +97,7 @@ public class Bomb extends Inhabitant
 			l.add(0d, 1d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : Game.getGrid().get(l))
+			for(Inhabitant inhabitant : g.get(l))
 				if(inhabitant instanceof Brick) {
 					Brick b = (Brick) inhabitant;
 					if(!b.isBreakable())
