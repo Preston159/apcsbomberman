@@ -19,6 +19,8 @@ public class Bomberman extends Inhabitant {
 	private int bombSize;
 	private Keyboard keys;
 	
+	private int player;
+	
 	/**
 	 * Initializes the bomberman
 	 * @param c
@@ -34,6 +36,7 @@ public class Bomberman extends Inhabitant {
 		bombCapacity = bc;
 		kickBomb = false;
 		bombSize = bs;
+		player = 0;
 	}
 	
 	public void setKey(Keyboard k)
@@ -101,29 +104,62 @@ public class Bomberman extends Inhabitant {
 		p.destroy();
 	}
 	
+	public int getPlayer() {
+		return player;
+	}
+	
+	public void setPlayer(int _player) {
+		player = _player;
+	}
+	
 	public void update()
 	{
-		if (keys.getKey(KeyEvent.VK_UP)) {
-			this.step(Location.UP);
-		}
-		if (keys.getKey(KeyEvent.VK_DOWN)) {
-			this.step(Location.DOWN);
-		}
-		if (keys.getKey(KeyEvent.VK_LEFT)) {
-			this.step(Location.LEFT);
-		}
-		if (keys.getKey(KeyEvent.VK_RIGHT)) {
-			this.step(Location.RIGHT);
-		}
-		if (keys.getKey(KeyEvent.VK_SPACE)) {
-			boolean place = true;
-			for(int i = 0;i < Game.getGrid().get(this.getLocation()).size();i++) {
-				Inhabitant inhabitant = Game.getGrid().get(this.getLocation()).get(i);
-				if(!(inhabitant instanceof Bomberman))
-					place = false;
+		if(getPlayer() == 0) {
+			if (keys.getKey(KeyEvent.VK_UP)) {
+				this.step(Location.UP);
 			}
-			if(place)
-				Game.queueAdd(new Bomb(this.getLocation().center(), bombSize, new ImageIcon("big_bomb.png")));
+			if (keys.getKey(KeyEvent.VK_DOWN)) {
+				this.step(Location.DOWN);
+			}
+			if (keys.getKey(KeyEvent.VK_LEFT)) {
+				this.step(Location.LEFT);
+			}
+			if (keys.getKey(KeyEvent.VK_RIGHT)) {
+				this.step(Location.RIGHT);
+			}
+			if (keys.getKey(KeyEvent.VK_CONTROL)) {
+				boolean place = true;
+				for(int i = 0;i < Game.getGrid().get(this.getLocation()).size();i++) {
+					Inhabitant inhabitant = Game.getGrid().get(this.getLocation()).get(i);
+					if(!(inhabitant instanceof Bomberman))
+						place = false;
+				}
+				if(place)
+					Game.queueAdd(new Bomb(this.getLocation().center(), bombSize, new ImageIcon("big_bomb.png")));
+			}
+		} else if(getPlayer() == 1) {
+			if (keys.getKey(KeyEvent.VK_W)) {
+				this.step(Location.UP);
+			}
+			if (keys.getKey(KeyEvent.VK_S)) {
+				this.step(Location.DOWN);
+			}
+			if (keys.getKey(KeyEvent.VK_A)) {
+				this.step(Location.LEFT);
+			}
+			if (keys.getKey(KeyEvent.VK_D)) {
+				this.step(Location.RIGHT);
+			}
+			if (keys.getKey(KeyEvent.VK_SPACE)) {
+				boolean place = true;
+				for(int i = 0;i < Game.getGrid().get(this.getLocation()).size();i++) {
+					Inhabitant inhabitant = Game.getGrid().get(this.getLocation()).get(i);
+					if(!(inhabitant instanceof Bomberman))
+						place = false;
+				}
+				if(place)
+					Game.queueAdd(new Bomb(this.getLocation().center(), bombSize, new ImageIcon("big_bomb.png")));
+			}
 		}
 	}
 }

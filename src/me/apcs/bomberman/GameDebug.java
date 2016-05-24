@@ -48,8 +48,12 @@ public class GameDebug extends JPanel {
 		players = new ArrayList<Bomberman>();
 		
 		//add one Inhabitant
-		players.add(new Bomberman(Color.BLUE, new Location(1,1), new ImageIcon("bombermanSprite.png"), 0.1, 1, 2));
+		players.add(new Bomberman(Color.BLUE, new Location(1, 1), new ImageIcon("bombermanSprite.png"), 0.1, 1, 2));
+		players.add(new Bomberman(Color.RED, new Location(8, 8), new ImageIcon("bombermanSprite.png"), 0.1, 1, 2));
+		players.get(0).setPlayer(0);
+		players.get(1).setPlayer(1);
 		Game.queueAdd(players.get(0));
+		Game.queueAdd(players.get(1));
 		
 		//add some Bricks
 		ArrayList<Brick> bricks = genBricks();
@@ -65,6 +69,7 @@ public class GameDebug extends JPanel {
 		keys = new Keyboard();
 		addKeyListener(keys);
 		players.get(0).setKey(keys);
+		players.get(1).setKey(keys);
 		
 		update();
 	}
