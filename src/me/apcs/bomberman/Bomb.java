@@ -47,14 +47,15 @@ public class Bomb extends Inhabitant
 			l.add(-1d, 0d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : g.get(l))
-				if(inhabitant instanceof Brick) {
-					Brick b = (Brick) inhabitant;
+			for (int j = 0; j < g.get(l).size(); j++) {
+				if(g.get(l).get(j) instanceof Brick) {
+					Brick b = (Brick) g.get(l).get(j);
 					if(!b.isBreakable())
 						break BLOCK1;
 					b.destroy();
 					up = false;
 				}
+			}
 			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
 			Game.queueAdd(explosion);
 			current++;
@@ -65,14 +66,16 @@ public class Bomb extends Inhabitant
 			l.add(1d, 0d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : g.get(l))
-				if(inhabitant instanceof Brick) {
-					Brick b = (Brick) inhabitant;
+			
+			for (int j = 0; j < g.get(l).size(); j++) {
+				if(g.get(l).get(j) instanceof Brick) {
+					Brick b = (Brick) g.get(l).get(j);
 					if(!b.isBreakable())
 						break BLOCK1;
 					b.destroy();
 					down = false;
 				}
+			}
 			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
 			Game.queueAdd(explosion);
 			current++;
@@ -83,14 +86,15 @@ public class Bomb extends Inhabitant
 			l.add(0d, -1d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : g.get(l))
-				if(inhabitant instanceof Brick) {
-					Brick b = (Brick) inhabitant;
+			for (int j = 0; j < g.get(l).size(); j++) {
+				if(g.get(l).get(j) instanceof Brick) {
+					Brick b = (Brick) g.get(l).get(j);
 					if(!b.isBreakable())
 						break BLOCK1;
 					b.destroy();
 					left = false;
 				}
+			}
 			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
 			Game.queueAdd(explosion);
 			current++;
@@ -101,14 +105,15 @@ public class Bomb extends Inhabitant
 			l.add(0d, 1d);
 			if(!Game.getGrid().isValid(l))
 				break;
-			for(Inhabitant inhabitant : g.get(l))
-				if(inhabitant instanceof Brick) {
-					Brick b = (Brick) inhabitant;
+			for (int j = 0; j < g.get(l).size(); j++) {
+				if(g.get(l).get(j) instanceof Brick) {
+					Brick b = (Brick) g.get(l).get(j);
 					if(!b.isBreakable())
 						break BLOCK1;
 					b.destroy();
 					right = false;
 				}
+			}
 			Explosion explosion = new Explosion(l.clone(), new ImageIcon("explosion.png"));
 			Game.queueAdd(explosion);
 			current++;
