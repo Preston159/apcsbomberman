@@ -177,7 +177,7 @@ public class Inhabitant {
 	
 	public void render(Graphics g, double scaleX, double scaleY) {
 		g.setColor(getColor());
-		g.fillRect((int)(getLocation().getX() * scaleX), (int)(getLocation().getY() * scaleY), (int)(scaleX * size), (int)(scaleY * size));
+		g.fillRect((int)((getLocation().getX() - 0.5) * scaleX), (int)((getLocation().getY() - 0.5) * scaleY), (int)(scaleX * size), (int)(scaleY * size));
 	}
 	
 	/**
